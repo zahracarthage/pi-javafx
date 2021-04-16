@@ -78,6 +78,7 @@ import java.io.OutputStream;
 import static java.util.Collections.list;
 import javafx.application.Platform;
 import javafx.event.EventHandler;
+import javafx.scene.control.TextArea;
 import javafx.scene.image.ImageView;
 
 
@@ -138,6 +139,16 @@ public class FrontController implements Initializable {
     private Button modifierrepasbtn;
     @FXML
     private Button supprimerrepasbtn;
+    @FXML
+    private TextField reclamationnom;
+    @FXML
+    private TextField reclamationprenom;
+    @FXML
+    private TextField reclamationemail;
+    @FXML
+    private ComboBox<?> reclamationsujet;
+    @FXML
+    private TextArea reclamationmessage;
 
     /**
      * Initializes the controller class.

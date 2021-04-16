@@ -161,8 +161,7 @@ public class repasService implements IService<repas> {
 
             }
 
-        }
-        catch (SQLException ex) {
+        } catch (SQLException ex) {
                 Logger.getLogger(repasService.class.getName()).log(Level.SEVERE, null, ex);
         }
         return list;
