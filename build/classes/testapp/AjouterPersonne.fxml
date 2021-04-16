@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" xmlns:fx="http://javafx.com/fxml/1" fx:controller="testapp.AjouterPersonneController">
+       <children>
+      <Label layoutX="125.0" layoutY="84.0" text="Nom :" />
+      <Label layoutX="125.0" layoutY="170.0" text="Prenom" />
+      <TextField fx:id="txtn" layoutX="237.0" layoutY="79.0" />
+      <TextField fx:id="txtp" layoutX="237.0" layoutY="165.0" />
+      <Button fx:id="btn" layoutX="262.0" layoutY="251.0" mnemonicParsing="false" onAction="#ajouter" text="Valider" />
+       </children>
+</AnchorPane>
