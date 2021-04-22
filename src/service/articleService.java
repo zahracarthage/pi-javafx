@@ -162,6 +162,7 @@ public class articleService {
                 a.setImg(rs.getString("image"));
                 list.add(a);
 
+               
             }
 
         } catch (SQLException ex) {

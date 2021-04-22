@@ -6,7 +6,6 @@
 package service;
 
 import entite.commande;
-import entite.repas;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -38,7 +37,7 @@ public class commandeService {
     
     public void ajoutercommande(commande c)
     {
-        String req = "insert into commande (date, quantite, prix_totale) values  ('" + c.getDate()+"','" + c.getQuantite()+  "','" + c.getPrixT()+ "')"; 
+        String req = "insert into commande (date, quantite, prix_total) values  ('" + c.getDate()+"','" + c.getQuantite()+  "','" + c.getPrixT()+ "')"; 
    
     try 
     {
@@ -63,20 +62,20 @@ public class commandeService {
        
        while (rs.next())
        {
-           list.add(new commande(rs.getInt("id"), rs.getString("date"), rs.getInt("quantite"), rs.getInt("prix_totale"))); 
+           list.add(new commande(rs.getInt("id"), rs.getString("date"), rs.getInt("quantite"), rs.getInt("prix_total"))); 
        }
        
        }
        catch (SQLException ex)
        {
-       Logger.getLogger(repasService.class.getName()).log(Level.SEVERE, null, ex);
+       Logger.getLogger(commandeService.class.getName()).log(Level.SEVERE, null, ex);
        }
     return list; 
     }
     
     public List <commande> liste2()
     {
-        String req = "select id, nom, description, price, category, adresse from repas"; 
+        String req = "select id, date, quantite, prix_total from commande"; 
         
        List <commande> list = new ArrayList<>(); 
        try {
@@ -85,7 +84,7 @@ public class commandeService {
        
        while (rs.next())
        {
-           list.add(new commande(rs.getInt("id"), rs.getString("date"), rs.getInt("quantite"), rs.getInt("prix_totale"))); 
+           list.add(new commande(rs.getInt("id"), rs.getString("date"), rs.getInt("quantite"), rs.getInt("prix_total"))); 
        }
        
        }
@@ -100,7 +99,7 @@ public class commandeService {
      public void supprimercommande(int id) {
        try {
             Statement stm=conn.createStatement();
-            String query="delete from commande where id = '"+id+"'  WHERE id='"+id+"'";
+            String query="delete from commande WHERE id='"+id+"'";
            
             stm.executeUpdate(query);
             
@@ -110,14 +109,14 @@ public class commandeService {
      }
      
        
-      public void modofiercommande (int id, String date, int quantite, int prix_totale){
-         String requete="UPDATE article SET date='"+date+"', quantite='"+quantite+"', prix_totale='"+prix_totale+"'";
+      public void modifiercommande (int id, String date, int quantite, int prix_total){
+         String requete="UPDATE commande SET date='"+date+"', quantite='"+quantite+"', prix_total='"+prix_total+"' WHERE id='"+id+"'";
          
          
          try{
              ste = conn.createStatement();
             ste.executeUpdate(requete);
-            System.out.println("annoncerepas modifié");
+            System.out.println("commande modifié");
         } catch (SQLException ex) {
             Logger.getLogger(commandeService.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -129,13 +128,13 @@ public class commandeService {
         
          List <commande> id = new ArrayList<>(); 
         Statement stm = conn.createStatement();
-        String query = "select id, date, quantite, prix_totale from commande";
+        String query = "select id, date, quantite, prix_total from commande";
 
         //ResultSet rs;
         rs = stm.executeQuery(query);
         commande commande;
         while (rs.next()) {
-           commande= new commande(rs.getInt("id"), rs.getString("date"), rs.getInt("quantite"), rs.getInt("prix_totale")); 
+           commande= new commande(rs.getInt("id"), rs.getString("date"), rs.getInt("quantite"), rs.getInt("prix_total")); 
             //System.out.println(events);
             commandelist.add(commande);
 
@@ -145,7 +144,7 @@ public class commandeService {
     }
      
     public ObservableList<commande> getCommandeListnew() throws SQLException {
-        String req = "select  id,date, quantite, prix_totale  from commande";
+        String req = "select  id,date, quantite, prix_total  from commande";
         ObservableList<commande> list = FXCollections.observableArrayList();
 
         try {
@@ -154,8 +153,8 @@ public class commandeService {
                 commande r = new commande();
                 r.setId(rs.getInt("id"));
                 r.setDate(rs.getString("date"));
-                r.setQuantite(rs.getInt("Quantite"));
-                r.setPrixT(rs.getInt("prix_totale"));
+                r.setQuantite(rs.getInt("quantite"));
+                r.setPrixT(rs.getInt("prix_total"));
                 list.add(r);
 
             }

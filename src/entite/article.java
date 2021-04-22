@@ -77,7 +77,7 @@ public article(String nom, String description, String categorie, int prix, Strin
    public void setDescription(String description)
    {this.description=description;}
    
-   public void setPrix(int price)
+   public void setPrix(int prix)
    {this.prix=prix;}
    
    public void setCategorie(String category)

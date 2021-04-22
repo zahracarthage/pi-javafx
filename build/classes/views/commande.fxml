@@ -29,7 +29,7 @@
                         <TextField fx:id="descriptionarticle" layoutX="162.0" layoutY="140.0" />
                         <TextField fx:id="categoriearticle" layoutX="162.0" layoutY="203.0" />
                         <TextField fx:id="prixarticle" layoutX="162.0" layoutY="267.0" />
-                        <ImageView fx:id="imgview" fitHeight="150.0" fitWidth="200.0" layoutX="156.0" layoutY="322.0" pickOnBounds="true" preserveRatio="true" />
+                        <ImageView fx:id="imgview" fitHeight="100.0" fitWidth="146.0" layoutX="183.0" layoutY="332.0" pickOnBounds="true" preserveRatio="true" />
                         <Button fx:id="uploadbtn" layoutX="39.0" layoutY="366.0" mnemonicParsing="false" onAction="#uploadimagearticle" text="upload " />
                         <TableView fx:id="affichagearticle" layoutX="371.0" layoutY="71.0" prefHeight="323.0" prefWidth="445.0">
                           <columns>
@@ -63,8 +63,8 @@
                           <columns>
                             <TableColumn fx:id="idcommandecol" prefWidth="75.0" text="id" />
                             <TableColumn fx:id="quantitecommandecol" prefWidth="75.0" text="quantite" />
-                              <TableColumn fx:id="prixtcol" prefWidth="117.0" text="prix totale" />
                               <TableColumn fx:id="datecommandecol" prefWidth="75.0" text="date" />
+                              <TableColumn fx:id="prixtcol" prefWidth="75.0" text="prix totale" />
                           </columns>
                         </TableView>
                      </children>

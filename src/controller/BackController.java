@@ -127,16 +127,18 @@ public class BackController implements Initializable {
                         .get(affichagecommande.getSelectionModel().getSelectedIndex())
                         .getDate()));
                 
-                quantitecommande.setText(String.valueOf(cs.liste2()
-                        .get(affichagecommande.getSelectionModel()
-                                .getSelectedIndex())
-                        .getQuantite()));
+              
                 
                 prixtcommande.setText(String.valueOf(cs.liste2()
                         .get(affichagecommande.getSelectionModel()
                                 .getSelectedIndex())
                         .getPrixT()
                 ));
+                
+                  quantitecommande.setText(String.valueOf(cs.liste2()
+                        .get(affichagecommande.getSelectionModel()
+                                .getSelectedIndex())
+                        .getQuantite()));
                 };
             
                
@@ -151,9 +153,9 @@ public class BackController implements Initializable {
             
             
             idcommandecol.setCellValueFactory(new PropertyValueFactory<>("id"));
-            datecommandecol.setCellValueFactory(new PropertyValueFactory<>("nom"));
-            quantitecommandecol.setCellValueFactory(new PropertyValueFactory<>("description"));
-            prixtcol.setCellValueFactory(new PropertyValueFactory<>("categorie"));
+            datecommandecol.setCellValueFactory(new PropertyValueFactory<>("date"));
+            quantitecommandecol.setCellValueFactory(new PropertyValueFactory<>("quantite"));
+            prixtcol.setCellValueFactory(new PropertyValueFactory<>("prix_total"));
 
             
            affichagecommande.setItems(list);
@@ -238,9 +240,7 @@ public class BackController implements Initializable {
           String rp = prixarticle.getText();
           int pa = Integer.parseInt(rp);
           
-          
-          
-    
+         
 
         article a = new article(articlenom.getText(),descriptionarticle.getText(),categoriearticle.getText(),pa,article.filename );
         
@@ -307,7 +307,9 @@ public class BackController implements Initializable {
 
     @FXML
     private void modifierarticle(ActionEvent event) throws SQLException {
-           article a = affichagearticle.getSelectionModel().getSelectedItem();
+        
+        
+         article a = affichagearticle.getSelectionModel().getSelectedItem();
         
         String rp = prixarticle.getText();
          int prixrepas = Integer.parseInt(rp);
@@ -320,8 +322,6 @@ public class BackController implements Initializable {
         a.setDescription(descriptionarticle.getText());
         a.setCategorie(categoriearticle.getText()); 
         a.setPrix(prixrepas);
-        
-        
         
         //a.setDate_eve(datee);
         a.setImg(imagecomp);
@@ -391,11 +391,11 @@ public class BackController implements Initializable {
           
           
           
+          
      String datee = datecommande.getValue().format(DateTimeFormatter.ofPattern("yyyy-MM-dd"));
-
+System.out.println(datee);
     
-
-        commande c = new commande(datee,quantitec,prixt );
+        commande c = new commande(datee,quantitec,prixt);
         
         commandeService cs = new commandeService();
         
@@ -421,11 +421,85 @@ public class BackController implements Initializable {
     }
 
     @FXML
-    private void modifiercommande(ActionEvent event) {
+    private void modifiercommande(ActionEvent event) throws SQLException {
+        
+        commande c = affichagecommande.getSelectionModel().getSelectedItem();
+       
+        
+         String qc = quantitecommande.getText();
+          int quantitec = Integer.parseInt(qc);
+          
+          
+           String pt = prixtcommande.getText();
+          int prixt = Integer.parseInt(pt);
+          
+          
+          
+          
+     String datee = datecommande.getValue().format(DateTimeFormatter.ofPattern("yyyy-MM-dd"));
+        System.out.println(datee);
+    
+        
+        commandeService cs = new commandeService();
+
+       // r.setNom(repasnom.getText());
+     //  String memid = select1.getValue();
+       // int id = Integer.parseInt(idd);
+       c.setDate(datee);
+        c.setQuantite(quantitec);
+
+        c.setPrixT(prixt);
+       
+              
+        
+                     try {
+                       
+        cs.modifiercommande(id,datee,quantitec,prixt);
+                        Alert alert = new Alert(Alert.AlertType.WARNING);
+                        alert.show();
+                        alert.setTitle("updated !");
+                        alert.setContentText("updated succesfully");
+
+                    } 
+                     catch (Exception e) 
+                     {
+                        Alert alert = new Alert(Alert.AlertType.ERROR);
+                        alert.show();
+                        alert.setTitle("fail !");
+                        alert.setContentText("failed succesfully");
+
+                    }
+          affichagecommande.setItems(cs.getCommandeListnew());
+
     }
 
     @FXML
     private void supprimercommande(ActionEvent event) {
+        
+        Alert alert2 = new Alert(Alert.AlertType.CONFIRMATION);
+        alert2.setTitle("Confirmation");
+        alert2.setHeaderText("voulez vous supprimer dis  ?");
+        Optional<ButtonType> result = alert2.showAndWait();
+        if (result.get() == ButtonType.OK) {
+            commandeService cs = new commandeService();
+            try {
+                cs.supprimercommande(id);
+                Alert alert = new Alert(Alert.AlertType.INFORMATION);
+                alert.setTitle("Delete");
+                alert.setHeaderText(null);
+                alert.setContentText(" Done!");
+                alert.show();
+                affichagecommande.setItems(cs.getCommandeList());
+            } catch (SQLException e) {
+                Alert alert = new Alert(Alert.AlertType.INFORMATION);
+                alert.setTitle("Echec");
+                alert.setHeaderText(null);
+                alert.setContentText("Delete Failed !");
+            }
+
+        } else {
+            alert2.close();
+        }
     }
     
 }
