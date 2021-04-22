@@ -18,7 +18,7 @@ public class reclamation {
     private String subject;
     private String message;
 
-    private int etat; 
+    private int etat = 0;
     
     
     public reclamation()
@@ -46,9 +46,8 @@ public class reclamation {
         this.message=message; 
         this.etat=etat;
     }
-      public reclamation( int id, String nom, String prenom, String email, String subject, String message )
+      public reclamation(String nom, String prenom, String email, String subject, String message )
     {
-        this.id=id; 
         this.nom=nom; 
         this.prenom=prenom; 
         this.email=email; 

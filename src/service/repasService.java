@@ -50,6 +50,7 @@ public class repasService implements IService<repas> {
     }
     }
     
+    
     public List <repas> readAll()
     {
         String req = "select * from repas"; 
@@ -71,6 +72,7 @@ public class repasService implements IService<repas> {
        }
     return list; 
     }
+    
     
     public List <repas> liste2()
     {
@@ -95,7 +97,10 @@ public class repasService implements IService<repas> {
     }
     
     
-     public void deleterepas(int id) {
+    
+    
+     
+    public void deleterepas(int id) {
        try {
             Statement stm=conn.createStatement();
             String query="delete from repas where id = '"+id+"'";
@@ -108,7 +113,11 @@ public class repasService implements IService<repas> {
      }
      
        
-      public void updaterepas (int id, String nom, String description, int price, String category, String adresse, String img){
+    
+    
+    
+    
+    public void updaterepas (int id, String nom, String description, int price, String category, String adresse, String img){
          String requete="UPDATE repas SET nom='"+nom+"', description='"+description+"', price='"+price+"',category='"+category+"' ,adresse='"+adresse+"' ,img='"+img+"'  WHERE id='"+id+"'";
          
          

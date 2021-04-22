@@ -5,6 +5,8 @@
  */
 package controller;
 
+import utils.mail;
+import entite.reclamation;
 import entite.repas;
 import static entite.repas.filename;
 import java.io.File;
@@ -80,6 +82,8 @@ import javafx.application.Platform;
 import javafx.event.EventHandler;
 import javafx.scene.control.TextArea;
 import javafx.scene.image.ImageView;
+import javax.mail.MessagingException;
+import service.reclamationService;
 
 
 /**
@@ -146,12 +150,43 @@ public class FrontController implements Initializable {
     @FXML
     private TextField reclamationemail;
     @FXML
-    private ComboBox<?> reclamationsujet;
+    private ComboBox<String> reclamationsujet; 
+    ObservableList<String> op = FXCollections.observableArrayList(
+                "paiement",
+                "probleme de connexion",
+                "SAV",
+                "autre"
+        );
     @FXML
     private TextArea reclamationmessage;
+    @FXML
+    private Button ajouterreclamationbtn;
+    @FXML
+    private TableView<reclamation> affichagereclamation;
+    @FXML
+    private TableColumn<reclamation, String> idreccol;
+    @FXML
+    private TableColumn<reclamation, String> nomrec;
+    @FXML
+    private TableColumn<reclamation, String> emailcolrec;
+    
+    @FXML
+    private TableColumn<reclamation, String> sujetcolrec;
+    
+    @FXML
+    private TableColumn<reclamation, String> etatcolrec;
+    @FXML
+    private Button modifierreclamationbtn;
+    @FXML
+    private Button supprimerreclamationbtn;
+               reclamationService recs = new reclamationService();
+    @FXML
+    private TableColumn<reclamation, String> prencolrec;
+    @FXML
+    private TableColumn<reclamation,String > msgcolrec;
 
     /**
-     * Initializes the controller class.
+     * Initializes the controller class
      * @param url
      * @param rb
      */
@@ -159,9 +194,11 @@ public class FrontController implements Initializable {
     public void initialize(URL url, ResourceBundle rb) {
     
 
-              repascategory.setItems(options);
-        
-        repasService rs = new repasService();
+             repascategory.setItems(options);
+            reclamationsujet.setItems(op);
+              
+              
+                  repasService rs = new repasService();
         
 
         
@@ -206,10 +243,9 @@ public class FrontController implements Initializable {
          }); 
        
         
-         ObservableList<repas> list;
-         
-        try {
-            list = rs.getRepasList();
+         ObservableList<repas> list2;      
+            try {
+            list2 = rs.getRepasList();
             
             
             idrepascol.setCellValueFactory(new PropertyValueFactory<>("id"));
@@ -217,17 +253,93 @@ public class FrontController implements Initializable {
             descrepascol.setCellValueFactory(new PropertyValueFactory<>("description"));
             categoryrepascol.setCellValueFactory(new PropertyValueFactory<>("category"));
             pricerepascol.setCellValueFactory(new PropertyValueFactory<>("price"));
-
             adresserepascol.setCellValueFactory(new PropertyValueFactory<>("adresse"));
             
-            affichagerepas.setItems(list);
+            affichagerepas.setItems(list2);
+
+            
+        } catch (SQLException ex) {
+            Logger.getLogger(FrontController.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
+        
+             
+            
+                    
+              affichagereclamation.setOnMouseClicked(new EventHandler<MouseEvent>() {
+            @Override
+            public void handle(MouseEvent event) {
+                id = recs.readAll()
+                        .get(affichagereclamation.getSelectionModel().getSelectedIndex())
+                        .getId();
+                //System.out.println(iddd);
+                
+                reclamationmessage.setText(recs.readAll()
+                        .get(affichagereclamation.getSelectionModel()
+                                .getSelectedIndex())
+                        .getMessage()
+                ); 
+                reclamationnom.setText(recs.readAll()
+                        .get(affichagereclamation.getSelectionModel().getSelectedIndex())
+                        .getNom());
+                
+                reclamationprenom.setText(recs.readAll()
+                         .get(affichagereclamation.getSelectionModel().getSelectedIndex())
+                        .getPrenom());
+                
+                
+                
+                reclamationemail.setText(recs.readAll()
+                        .get(affichagereclamation.getSelectionModel()
+                                .getSelectedIndex())
+                        .getEmail());
+                
+                reclamationsujet.setValue(recs.readAll()
+                        .get(affichagereclamation.getSelectionModel()
+                                .getSelectedIndex())
+                        .getSubject()
+                );
+                
+  
+                
+               
+                };
+            
+         
+               
+         }); 
+       
+         ObservableList<reclamation> list;
+
+         
+        try {
+            list = recs.getReclamationList();
+            
+            idreccol.setCellValueFactory(new PropertyValueFactory<>("id"));
+            nomrec.setCellValueFactory(new PropertyValueFactory<>("nom"));
+            prencolrec.setCellValueFactory(new PropertyValueFactory<>("prenom"));
+
+            
+            emailcolrec.setCellValueFactory(new PropertyValueFactory<>("email"));
+            
+       sujetcolrec.setCellValueFactory(new PropertyValueFactory<>("subject"));
+
+            
+            msgcolrec.setCellValueFactory(new PropertyValueFactory<>("message"));
+
+            etatcolrec.setCellValueFactory(new PropertyValueFactory<>("etat"));
+            
+            affichagereclamation.setItems(list);
 
             
         } catch (SQLException ex) {
             Logger.getLogger(FrontController.class.getName()).log(Level.SEVERE, null, ex);
         }
 
+        
 
+        
+            
 
          
     }    
@@ -329,9 +441,10 @@ public class FrontController implements Initializable {
         repasService rs = new repasService();
         
         
+        
           try {
                        
-        rs.updaterepas (id, r.getNom(),r.getDescription(),repasp,r.getCategory(),r.getAdresse(), repas.filename );
+               rs.updaterepas (id, r.getNom(),r.getDescription(),repasp,r.getCategory(),r.getAdresse(), repas.filename );
                         Alert alert = new Alert(Alert.AlertType.WARNING);
                         alert.show();
                         alert.setTitle("updated !");
@@ -349,6 +462,8 @@ public class FrontController implements Initializable {
         
     }
 
+    
+    
     @FXML
     private void supprimerrepas(ActionEvent event) {
         
@@ -378,5 +493,88 @@ public class FrontController implements Initializable {
         }
     }
 
+    @FXML
+    private void ajouterreclamation(ActionEvent event) throws SQLException, MessagingException {
+        
+        
+            
+
+        reclamation rec = new reclamation(reclamationnom.getText(),reclamationprenom.getText(),reclamationemail.getText(),reclamationsujet.getValue().toString(),reclamationmessage.getText());
+        
+        reclamationService rs = new reclamationService();
+        
+        rs.ajoutereclamation(rec);
+        
+         try {
+              
+                Alert alert = new Alert(Alert.AlertType.INFORMATION);
+                alert.setTitle("Done");
+                alert.setContentText("Addeded!");
+                alert.show();
+                
+              
+                
+                affichagereclamation.refresh();
+            } catch (Exception ee) {
+                Alert alert = new Alert(Alert.AlertType.ERROR);
+                alert.setTitle("Error!");
+                alert.show();
+            }
+            affichagereclamation.setItems(rs.getReclamationList());
+            mail.sendMail("kiftrip@gmail.com");
+        
+     }
+
+    @FXML
+    private void modifierrecbtn(ActionEvent event) {
+        
+         reclamation r = affichagereclamation.getSelectionModel().getSelectedItem();
+        
+      
+
+       
+    }
+ @FXML
+    private void supprimerrecbtn(ActionEvent event) {
+        
+         Alert alert2 = new Alert(Alert.AlertType.CONFIRMATION);
+        alert2.setTitle("Confirmation");
+        alert2.setHeaderText("voulez vous supprimer cet reclamation  ?");
+        Optional<ButtonType> result = alert2.showAndWait();
+        if (result.get() == ButtonType.OK) {
+            reclamationService rs = new reclamationService();
+            try {
+                rs.supprimerreclamation(id);
+                Alert alert = new Alert(Alert.AlertType.INFORMATION);
+                alert.setTitle("Delete");
+                alert.setHeaderText(null);
+                alert.setContentText(" Done!");
+                alert.show();
+                affichagereclamation.setItems(rs.getReclamationList());
+            } catch (SQLException e) {
+                Alert alert = new Alert(Alert.AlertType.INFORMATION);
+                alert.setTitle("Echec");
+                alert.setHeaderText(null);
+                alert.setContentText("Delete Failed !");
+            }
+
+        } else {
+            alert2.close();
+        }
+    }
+   
+
+    
+
+/*
+
+    @FXML
+    private void modifierrecbtn(ActionEvent event) {
+    }
+
+    @FXML
+    private void supprimerrecbtn(ActionEvent event) {
+    }
+*/
     
 }

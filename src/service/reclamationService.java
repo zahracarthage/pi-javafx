@@ -34,9 +34,10 @@ public class reclamationService {
     { conn= DataSource.getInstance().getCnx();
     }
     
+    
     public void ajoutereclamation(reclamation c)
     {
-        String req = "insert into reclamation (nom, prenom, email,subject,message, etat) values  ('" + c.getNom()+"','" + c.getPrenom()+  "','" + c.getEmail()+ "','" + c.getSubject()+"','" + c.getMessage()+ 1 +"')"; 
+        String req = "insert into reclamation (nom, prenom, email,subject,message) values  ('" + c.getNom()+"','" + c.getPrenom()+  "','" + c.getEmail()+ "','" + c.getSubject()+"','" + c.getMessage() +"')"; 
    
     try 
     {
@@ -61,7 +62,16 @@ public class reclamationService {
        
        while (rs.next())
        {
-           list.add(new reclamation(rs.getInt("id"), rs.getString("nom"), rs.getString("prenom"), rs.getString("email"), rs.getString("subject"),rs.getString("message"))); 
+            reclamation r = new reclamation(); 
+            r.setId(rs.getInt("id")); 
+            r.setNom(rs.getString("nom"));
+            r.setEmail(rs.getString("email"));
+            r.setSubject(rs.getString("subject"));
+            r.setMessage(rs.getString("message"));
+            r.setEtat(rs.getInt("etat"));
+            
+            list.add(r);
+            
        }
        
        }
@@ -74,7 +84,7 @@ public class reclamationService {
     
     public List <reclamation> liste2()
     {
-        String req = "select id, nom, description, price, category, adresse from repas"; 
+        String req = "select id, nom, prenom, email, subject, message, etat from reclamation"; 
         
        List <reclamation> list = new ArrayList<>(); 
        try {
@@ -85,6 +95,7 @@ public class reclamationService {
        {
            list.add(new reclamation(rs.getInt("id"), rs.getString("nom"), rs.getString("prenom"), rs.getString("email"), rs.getString("subject"),rs.getString("message"),rs.getInt("etat"))); 
        }
+       
        
        }
        catch (SQLException ex)
@@ -113,7 +124,6 @@ public class reclamationService {
          
 
          
-         
          try{
              ste = conn.createStatement();
             ste.executeUpdate(requete);
@@ -127,15 +137,15 @@ public class reclamationService {
            
         ObservableList<reclamation> reclamationlist = FXCollections.observableArrayList();
         
-         List <reclamation> id = new ArrayList<>(); 
+         List <reclamation> rec = new ArrayList<>(); 
         Statement stm = conn.createStatement();
-        String query = "select id, nom, prenom, email, subject, message from reclamation";
+        String query = "select id, nom, prenom, email, subject, message, etat from reclamation";
 
         //ResultSet rs;
         rs = stm.executeQuery(query);
         reclamation reclamation;
         while (rs.next()) {
-           reclamation = new reclamation(rs.getInt("id"), rs.getString("nom"), rs.getString("prenom"), rs.getString("email"), rs.getString("subject"), rs.getString("message")); 
+           reclamation = new reclamation(rs.getInt("id"), rs.getString("nom"), rs.getString("prenom"), rs.getString("email"), rs.getString("subject"), rs.getString("message"),rs.getInt("etat")); 
             //System.out.println(events);
             reclamationlist.add(reclamation);
 
@@ -145,7 +155,7 @@ public class reclamationService {
     }
      
     public ObservableList<reclamation> getReclamationListnew() throws SQLException {
-        String req = "select  id,nom, prenom, email,subject,message  from reclamation";
+        String req = "select  id,nom, prenom, email,subject,message etat from reclamation";
         ObservableList<reclamation> list = FXCollections.observableArrayList();
 
         try {

@@ -36,7 +36,7 @@
                         <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Ajouter un repas" />
                         <ComboBox fx:id="repascategory" layoutX="173.0" layoutY="261.0" opacity="0.83" prefHeight="31.0" prefWidth="187.0" />
                         <Button fx:id="upload" layoutX="161.0" layoutY="388.0" mnemonicParsing="false" onAction="#uploadimg" prefHeight="31.0" prefWidth="76.0" text="upload" />
-                        <TableView fx:id="affichagerepas" layoutX="420.0" layoutY="65.0" prefHeight="368.0" prefWidth="521.0">
+                        <TableView fx:id="affichagerepas" layoutX="420.0" layoutY="65.0" prefHeight="379.0" prefWidth="568.0">
                           <columns>
                             <TableColumn fx:id="idrepascol" prefWidth="49.0" text="id" />
                             <TableColumn fx:id="nomrepascol" prefWidth="101.0" text="nom" />
@@ -55,7 +55,7 @@
                <content>
                   <AnchorPane prefHeight="200.0" prefWidth="200.0">
                      <children>
-                        <Button layoutX="149.0" layoutY="591.0" mnemonicParsing="false" text="Envoyer" />
+                        <Button fx:id="ajouterreclamationbtn" layoutX="149.0" layoutY="591.0" mnemonicParsing="false" onAction="#ajouterreclamation" text="Envoyer" />
                         <TextField fx:id="reclamationnom" layoutX="128.0" layoutY="102.0" />
                         <TextField fx:id="reclamationprenom" layoutX="128.0" layoutY="172.0" />
                         <TextField fx:id="reclamationemail" layoutX="128.0" layoutY="246.0" />
@@ -66,16 +66,19 @@
                         <Label layoutX="33.0" layoutY="251.0" text="email" />
                         <Label layoutX="33.0" layoutY="321.0" text="sujet" />
                         <Label layoutX="32.0" layoutY="386.0" text="message" />
-                        <TableView layoutX="471.0" layoutY="98.0" prefHeight="324.0" prefWidth="484.0">
+                        <TableView fx:id="affichagereclamation" layoutX="471.0" layoutY="98.0" prefHeight="324.0" prefWidth="484.0">
                           <columns>
-                            <TableColumn prefWidth="75.0" text="id" />
-                            <TableColumn prefWidth="75.0" text="nom" />
-                              <TableColumn prefWidth="75.0" text="email" />
-                              <TableColumn prefWidth="75.0" text="sujet" />
-                              <TableColumn prefWidth="75.0" text="message" />
-                              <TableColumn prefWidth="75.0" text="etat" />
+                            <TableColumn fx:id="idreccol" prefWidth="75.0" text="id" />
+                            <TableColumn fx:id="nomrec" prefWidth="75.0" text="nom" />
+                              <TableColumn fx:id="prencolrec" prefWidth="75.0" text="prenom" />
+                              <TableColumn fx:id="emailcolrec" prefWidth="75.0" text="email" />
+                              <TableColumn fx:id="sujetcolrec" prefWidth="75.0" text="sujet" />
+                              <TableColumn fx:id="etatcolrec" prefWidth="75.0" text="etat" />
+                              <TableColumn fx:id="msgcolrec" prefWidth="75.0" text="message" />
                           </columns>
                         </TableView>
+                        <Button fx:id="modifierreclamationbtn" layoutX="647.0" layoutY="449.0" mnemonicParsing="false" onAction="#modifierrecbtn" text="modifier" />
+                        <Button fx:id="supprimerreclamationbtn" layoutX="778.0" layoutY="449.0" mnemonicParsing="false" onAction="#supprimerrecbtn" text="supprimer" />
                      </children>
                   </AnchorPane>
                </content></Tab>
