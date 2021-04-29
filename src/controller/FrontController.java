@@ -5,10 +5,26 @@
  */
 package controller;
 
+import com.google.zxing.BarcodeFormat;
+import com.google.zxing.client.j2se.MatrixToImageConfig;
+import com.google.zxing.client.j2se.MatrixToImageWriter;
+import com.itextpdf.text.Chunk;
+import com.itextpdf.text.DocumentException;
+import com.itextpdf.text.Element;
+import com.itextpdf.text.Document;
+
+import com.itextpdf.text.Font;
+import com.itextpdf.text.Paragraph;
+import com.itextpdf.text.pdf.PdfPTable;
+import com.itextpdf.text.pdf.PdfWriter;
 import utils.mail;
 import entite.reclamation;
 import entite.repas;
 import static entite.repas.filename;
+import entite.reservationrepas;
+import java.awt.AWTException;
+import java.awt.AlphaComposite;
+import java.awt.Graphics2D;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
@@ -35,6 +51,8 @@ import service.repasService;
 import javafx.scene.image.Image;
 import java.awt.SystemTray;
 import java.awt.TrayIcon;
+import java.awt.image.BufferedImage;
+import java.io.ByteArrayOutputStream;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
@@ -75,15 +93,31 @@ import javafx.scene.layout.AnchorPane;
 import javafx.stage.FileChooser;
 import java.io.File;
 import java.io.FileOutputStream;
-
 import java.io.OutputStream;
+import static java.nio.file.Files.list;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 import static java.util.Collections.list;
+import java.util.HashMap;
+import java.util.Map;
 import javafx.application.Platform;
+import static javafx.beans.binding.Bindings.select;
+import static javafx.beans.binding.Bindings.select;
+import javafx.collections.transformation.FilteredList;
+import javafx.collections.transformation.SortedList;
 import javafx.event.EventHandler;
+import javafx.print.PageLayout;
+import javafx.print.PageOrientation;
+import javafx.print.Paper;
+import javafx.print.Printer;
+import javafx.print.PrinterJob;
+import javafx.scene.Node;
 import javafx.scene.control.TextArea;
 import javafx.scene.image.ImageView;
+import javax.imageio.ImageIO;
 import javax.mail.MessagingException;
 import service.reclamationService;
+import service.reservationrepasService;
 
 
 /**
@@ -93,6 +127,8 @@ import service.reclamationService;
  */
 public class FrontController implements Initializable {
     
+    
+   
     
     public String imagecomp; 
                Integer id, idd; 
@@ -184,6 +220,56 @@ public class FrontController implements Initializable {
     private TableColumn<reclamation, String> prencolrec;
     @FXML
     private TableColumn<reclamation,String > msgcolrec;
+    @FXML
+    private Button pdfrepasbtn;
+    @FXML
+    private Button pdfrepas;
+    @FXML
+    private Button trirepas;
+    @FXML
+    private TextField searchrepas;
+    @FXML
+    private Button qr;
+    @FXML
+    private DatePicker dateres;
+    @FXML
+    private TableView<?> affichageresrep;
+    @FXML
+    private TextField nbrpersonnes;
+    @FXML
+    private TextArea messageresrep;
+    @FXML
+    private TextField emailresrep;
+    @FXML
+    private TextField nomresrep;
+    @FXML
+    private TextField phoneresrep;
+    @FXML
+    private TextField nomrepas;
+    @FXML
+    private Button btn_ajoutreservation;
+    @FXML
+    private Button btn_supprimerreservation;
+    @FXML
+    private TableColumn<reservationrepas, String> idtabres;
+    @FXML
+    private TableColumn<reservationrepas, String> idrtabres;
+    @FXML
+    private TableColumn<reservationrepas, String> datetabres;
+    @FXML
+    private TableColumn<reservationrepas, String> nbrtabres;
+    @FXML
+    private TableColumn<reservationrepas, String> msgtabres;
+    @FXML
+    private TableColumn<reservationrepas, String> nomtabres;
+    @FXML
+    private TableColumn<reservationrepas, String> emailtabres;
+    @FXML
+    private TableColumn<reservationrepas, String> phonetabres;
+    @FXML
+    private ComboBox<String> idr;
+
+   // repas r = (repas) idr.getSelectionModel().getSelectedItem();
 
     /**
      * Initializes the controller class
@@ -193,16 +279,37 @@ public class FrontController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle rb) {
     
+       //repas r = new repas();
+        
+     //   int id_utilisateur= user.getId_utilisateur();
+     
+                       repasService rs = new repasService();
+                       reservationrepasService rrs= new reservationrepasService();
+                       
+                       
+        try {
+            idr.setItems(FXCollections.observableArrayList(rrs.listidr()));
+        } catch (SQLException ex) {
+            Logger.getLogger(FrontController.class.getName()).log(Level.SEVERE, null, ex);
+        }
+                           System.out.println(idr);
+                       
 
+     
+      /*  try {
+            idr.setItems(FXCollections.observableArrayList(rrs.getAllrepas()));
+        } catch (SQLException ex) {
+            Logger.getLogger(FrontController.class.getName()).log(Level.SEVERE, null, ex);
+        } */
+
+
+        
+        
              repascategory.setItems(options);
             reclamationsujet.setItems(op);
               
               
-                  repasService rs = new repasService();
         
-
-        
-                     
               affichagerepas.setOnMouseClicked(new EventHandler<MouseEvent>() {
             @Override
             public void handle(MouseEvent event) {
@@ -242,8 +349,10 @@ public class FrontController implements Initializable {
                
          }); 
        
+              
         
-         ObservableList<repas> list2;      
+              
+        ObservableList<repas> list2;      
             try {
             list2 = rs.getRepasList();
             
@@ -261,14 +370,12 @@ public class FrontController implements Initializable {
         } catch (SQLException ex) {
             Logger.getLogger(FrontController.class.getName()).log(Level.SEVERE, null, ex);
         }
-        
-        
-             
+          
             
-                    
-              affichagereclamation.setOnMouseClicked(new EventHandler<MouseEvent>() {
-            @Override
-            public void handle(MouseEvent event) {
+            
+         affichagereclamation.setOnMouseClicked(new EventHandler<MouseEvent>() {
+         @Override
+        public void handle(MouseEvent event) {
                 id = recs.readAll()
                         .get(affichagereclamation.getSelectionModel().getSelectedIndex())
                         .getId();
@@ -279,6 +386,7 @@ public class FrontController implements Initializable {
                                 .getSelectedIndex())
                         .getMessage()
                 ); 
+                
                 reclamationnom.setText(recs.readAll()
                         .get(affichagereclamation.getSelectionModel().getSelectedIndex())
                         .getNom());
@@ -308,7 +416,7 @@ public class FrontController implements Initializable {
          
                
          }); 
-       
+         
          ObservableList<reclamation> list;
 
          
@@ -336,17 +444,65 @@ public class FrontController implements Initializable {
             Logger.getLogger(FrontController.class.getName()).log(Level.SEVERE, null, ex);
         }
 
+        //well 
         
-
         
+        
+        
+        
+        //sort wela recherche
+        
+        
+        
+        ObservableList<repas> liste;
+         try {
+             liste = rs.getRepasList();
             
+        FilteredList<repas> filteredData = new FilteredList<>(liste, b -> true);
+		
+		// 2. Set the filter Predicate whenever the filter changes.
+		searchrepas.textProperty().addListener((observable, oldValue, newValue) -> {
+			filteredData.setPredicate(repas -> {
+				// If filter text is empty, display all persons.
+								
+				if (newValue == null || newValue.isEmpty()) {
+					return true;
+				}
+				
+				// Compare first name and last name of every person with filter text.
+				String lowerCaseFilter = newValue.toLowerCase();
+				
+				if (repas.getNom().toLowerCase().indexOf(lowerCaseFilter) != -1 ) {
+					return true; // Filter matches first name.
+				} else if (repas.getNom().toLowerCase().indexOf(lowerCaseFilter) != -1) {
+					return true; // Filter matches last name.
+				}
+				else if (String.valueOf(repas.getCategory()).indexOf(lowerCaseFilter)!=-1)
+				     return true;
+				     else  
+				    	 return false; // Does not match.
+			});
+		});
+		
+		// 3. Wrap the FilteredList in a SortedList. 
+		SortedList<repas> sortedData = new SortedList<>(filteredData);
+		
+		// 4. Bind the SortedList comparator to the TableView comparator.
+		// 	  Otherwise, sorting the TableView would have no effect.
+		sortedData.comparatorProperty().bind(affichagerepas.comparatorProperty());
+		
+		// 5. Add sorted (and filtered) data to the table.
+		affichagerepas.setItems(sortedData);
+        } catch (SQLException ex) {
+             Logger.getLogger(repasService.class.getName()).log(Level.SEVERE, null, ex);
+         }
 
-         
+   
     }    
 
 
     @FXML
-    private void ajouterrepas(ActionEvent event) throws SQLException {
+    private void ajouterrepas(ActionEvent event) throws SQLException, AWTException, InterruptedException {
         
       //  repas r = new repas(nom, description, price, category, adresse, img );
           String rp = repasprice.getText();
@@ -360,14 +516,27 @@ public class FrontController implements Initializable {
         
         repasService rs = new repasService();
         
-        rs.ajouterrepas(r);
+        
+        
         
          try {
               
+             
+             rs.ajouterrepas(r);
+             if (SystemTray.isSupported()) {
+                    //TrayIconDemo td = new TrayIconDemo();
+                    rs.displayTray();
+                    //System.out.println("aaaaa");
+                
                 Alert alert = new Alert(Alert.AlertType.INFORMATION);
                 alert.setTitle("Done");
                 alert.setContentText("Addeded!");
                 alert.show();
+                
+             }
+                   else {
+                    System.err.println("System tray not supported!");
+                }
                 
               
                 
@@ -378,6 +547,9 @@ public class FrontController implements Initializable {
                 alert.show();
             }
             affichagerepas.setItems(rs.getRepasList());
+          //  String memid = select.getValue();
+           //nt idd = Integer.parseInt(memid);
+
         
      }
     
@@ -494,7 +666,7 @@ public class FrontController implements Initializable {
     }
 
     @FXML
-    private void ajouterreclamation(ActionEvent event) throws SQLException, MessagingException {
+    private void ajouterreclamation(ActionEvent event) throws SQLException, MessagingException, Exception {
         
         
             
@@ -521,7 +693,7 @@ public class FrontController implements Initializable {
                 alert.show();
             }
             affichagereclamation.setItems(rs.getReclamationList());
-            mail.sendMail("kiftrip@gmail.com");
+            mail.sendMail(reclamationemail.getText());
         
      }
 
@@ -534,6 +706,16 @@ public class FrontController implements Initializable {
 
        
     }
+    
+    @FXML
+    private void trirepasnombtn(ActionEvent event) throws SQLException {
+        repasService rs = new repasService();
+        rs.tri();
+        affichagerepas.setItems((ObservableList<repas>) rs.tri());
+        
+        
+    }
+    
  @FXML
     private void supprimerrecbtn(ActionEvent event) {
         
@@ -576,5 +758,277 @@ public class FrontController implements Initializable {
     private void supprimerrecbtn(ActionEvent event) {
     }
 */
+
+    @FXML
+    private void exportpdfrepasbtn(ActionEvent event) {
+        
+       
+         PrinterJob job = PrinterJob.createPrinterJob();
+       
+        Node root= this.affichagerepas;
+        
+     if(job != null){
+     job.showPrintDialog(root.getScene().getWindow()); // Window must be your main Stage
+     Printer printer = job.getPrinter();
+     PageLayout pageLayout = printer.createPageLayout(Paper.A3, PageOrientation.LANDSCAPE, Printer.MarginType.HARDWARE_MINIMUM);
+     boolean success = job.printPage(pageLayout, root);
+     if(success){
+        job.endJob();
+     }
+   }
+        
+    }
+
+    @FXML
+    private void pdfrepas(ActionEvent event) throws SQLException {
+        repasService rs = new repasService();
+              
+         ObservableList<repas> list = rs.getRepasList();
+        try {
+            OutputStream file = new FileOutputStream(new File("D:\\pdf\\exportfront.pdf"));
+            Document document = new Document();
+            PdfWriter.getInstance(document, file);
+            document.open();
+
+            Font font = new Font(Font.FontFamily.HELVETICA, 24, Font.BOLD);
+            Paragraph pdfTitle = new Paragraph("Repas list", font);
+            pdfTitle.setAlignment(Element.ALIGN_CENTER);
+
+            document.add(pdfTitle);
+            document.add(new Chunk("\n"));
+            PdfPTable table = new PdfPTable(3);
+            table.setHeaderRows(1);
+
+            table.addCell("Name");
+            table.addCell("Date");
+            table.addCell("Description");
+
+            list.forEach((_item) -> {
+                table.addCell(_item.getNom());
+                table.addCell(_item.getDescription());
+                table.addCell(_item.getAdresse());
+            });
+
+            document.add(table);
+
+            document.close();
+
+            file.close();
+
+        } catch (DocumentException | IOException e) {
+            Alert alert = new Alert(Alert.AlertType.ERROR);
+            alert.setTitle("Error");
+            alert.setContentText("Cannot export data!");
+            alert.show();
+        }
+    }
+
+  
+
+    @FXML
+    private void generateqr(ActionEvent event) {
+                repasService rs = new repasService();
+
+                if (affichagerepas.getSelectionModel().getSelectedItem() != null) {
+            repas e = new repas();
+            e.setDescription(rs.liste2().get(affichagerepas.getSelectionModel().getSelectedIndex()).getDescription());
+            e.setNom(rs.liste2().get(affichagerepas.getSelectionModel().getSelectedIndex()).getNom());
+            e.setAdresse(rs.liste2().get(affichagerepas.getSelectionModel().getSelectedIndex()).getAdresse());
+            
+            Map hints = new HashMap();
+            hints.put(com.google.zxing.EncodeHintType.ERROR_CORRECTION, com.google.zxing.qrcode.decoder.ErrorCorrectionLevel.H);
+            com.google.zxing.qrcode.QRCodeWriter writer = new com.google.zxing.qrcode.QRCodeWriter();
+            com.google.zxing.common.BitMatrix bitMatrix = null;
+            ByteArrayOutputStream baos = new ByteArrayOutputStream();
+            try {
+                // Create a qr code with the url as content and a size of 250x250 px
+                bitMatrix = writer.encode("The plate's name= "+e.getNom()+"  "+"The plate's description= "+e.getDescription()+"  "+"The plate's adress=  "+e.getAdresse(), BarcodeFormat.QR_CODE, 250, 250, hints);
+                MatrixToImageConfig config = new MatrixToImageConfig(MatrixToImageConfig.BLACK, MatrixToImageConfig.WHITE);
+                // Load QR image
+                BufferedImage qrImage = MatrixToImageWriter.toBufferedImage(bitMatrix, config);
+                // Load logo image
+                File file = new File("C:\\ahmed.png");
+                BufferedImage logoImage = ImageIO.read(file);
+                // Calculate the delta height and width between QR code and logo
+                int deltaHeight = qrImage.getHeight() - logoImage.getHeight();
+                int deltaWidth = qrImage.getWidth() - logoImage.getWidth();
+                // Initialize combined image
+                BufferedImage combined = new BufferedImage(qrImage.getHeight(), qrImage.getWidth(), BufferedImage.TYPE_INT_ARGB);
+                Graphics2D g = (Graphics2D) combined.getGraphics();
+                // Write QR code to new image at position 0/0
+                g.drawImage(qrImage, 0, 0, null);
+                g.setComposite(AlphaComposite.getInstance(AlphaComposite.SRC_OVER, 1f));
+                // Write logo into combine image at position (deltaWidth / 2) and
+                // (deltaHeight / 2). Background: Left/Right and Top/Bottom must be
+                // the same space for the logo to be centered
+                g.drawImage(logoImage, (int) Math.round(deltaWidth / 2), (int) Math.round(deltaHeight / 2), null);
+                // Write combined image as PNG to OutputStream
+                ImageIO.write(combined, "png", new File("C:\\QR.png"));
+                //System.out.println("done");
+            } catch (Exception ea) {
+                System.out.println(ea);
+            }
+        }
+        else{
+            Alert alert = new Alert(Alert.AlertType.WARNING);
+            alert.setContentText("Choose a row !");
+            alert.show();
+        }
+    }
+
+   // @FXML
+    //private void dateres(ActionEvent event) {
+
+    @FXML
+    private void searchrepas(ActionEvent event) {
+    }
+
+    @FXML
+    private void dateres(ActionEvent event) {
+    }
+
+    @FXML
+    private void ajoutreservation(ActionEvent event) {
+        
+          String rp = nomrepas.getText();
+          int repasp = Integer.parseInt(rp);
+          
+          
+          String nbr= nbrpersonnes.getText();
+          int nbrpersonnes = Integer.parseInt(nbr);
+                  
+                  
+          String datee = dateres.getValue().format(DateTimeFormatter.ofPattern("yyyy-MM-dd"));
+
+          
+ reservationrepas rr = new reservationrepas(repasp,datee,nbrpersonnes, messageresrep.getText(),nomresrep.getText(),emailresrep.getText(),phoneresrep.getText());
+        
+        reservationrepasService rrs = new reservationrepasService();
+        
+        
+        
+        
+         try {
+              
+             
+             rrs.ajouterreservationrepas(rr);
+             if (SystemTray.isSupported()) {
+                    //TrayIconDemo td = new TrayIconDemo();
+                    rrs.displayTray();
+                    //System.out.println("aaaaa");
+                
+                Alert alert = new Alert(Alert.AlertType.INFORMATION);
+                alert.setTitle("Done");
+                alert.setContentText("Addeded!");
+                alert.show();
+                
+             }
+                   else {
+                    System.err.println("System tray not supported!");
+                }
+                
+              
+                
+                affichagerepas.refresh();
+            } catch (Exception ee) {
+                Alert alert = new Alert(Alert.AlertType.ERROR);
+                alert.setTitle("Error!");
+                alert.show();
+            }
+        //affichageresrep.setItems(rrs.getresrepasliste());
+        
+
+        
+    }
+
+    @FXML
+    private void supprimerreservation(ActionEvent event) {
+        
+         Alert alert2 = new Alert(Alert.AlertType.CONFIRMATION);
+        alert2.setTitle("Confirmation");
+        alert2.setHeaderText("voulez vous supprimer cette reservation  ?");
+        Optional<ButtonType> result = alert2.showAndWait();
+        if (result.get() == ButtonType.OK) {
+            reservationrepasService rs = new reservationrepasService();
+            rs.supprimerreservation(id);
+            Alert alert = new Alert(Alert.AlertType.INFORMATION);
+            alert.setTitle("Delete");
+            alert.setHeaderText(null);
+            alert.setContentText(" Done!");
+            alert.show();
+            
+          //  affichageresrep.setItems(rs.getresrepasliste());
+
+        } else {
+            alert2.close();
+        }
+        
+        
+    }
+/*
+    @FXML
+    private void idr(ActionEvent event) throws SQLException {
+        
+        reservationrepasService rp = new reservationrepasService();
     
+        List<String> repa=  rp.listidr();
+ 
+    ObservableList<repas> utili = FXCollections.observableArrayList();
+ 
+       
+        for(repas e : repas)
+
+        {
+
+        utili.add(new repas(e.getId(),e.getNom()));
+
+        idr.setItems(utili);
+        }
+
+           // como2.getItems().addAll(e.getId_utilisateur(),e.getNom()); 
+        //Utilisateur user = como2.getSelectionModel().getSelectedItem();
+
+
+
+    }*/
 }
+//
+    
+    
+    /*
+    @FXML
+    private void combodis(ActionEvent event) {
+        
+   
+    reservationrepasService rp = new reservationrepasService();
+    
+        List<repas> repa=  rp.getAllrepas();
+ 
+    ObservableList<repas> utili = FXCollections.observableArrayList();
+ 
+       
+        for(repas e : repa)
+
+        {
+
+        utili.add(new repas(e.getId(),e.getNom()));
+
+        idr.setItems(utili);
+        }
+
+           // como2.getItems().addAll(e.getId_utilisateur(),e.getNom()); 
+        //Utilisateur user = como2.getSelectionModel().getSelectedItem();
+
+
+else{
+idr.setVisible(false);
+}
+ // como2.getSelectionModel().getSelectedItem();
+//    System.out.print(u.getId_utilisateur());
+
+}*/
+    
+
+    
+    
+

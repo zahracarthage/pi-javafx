@@ -5,6 +5,8 @@
  */
 package utils;
 
+import java.sql.Connection;
+import java.sql.Statement;
 import java.util.Properties;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -16,70 +18,50 @@ import javax.mail.PasswordAuthentication;
 import javax.mail.Transport;
 import javax.mail.internet.MimeMessage;
 import javax.mail.internet.InternetAddress;
+import utils.DataSource;
 /**
  *
  * @author zcart
  */
 public class mail {
-    public static void sendMail(String recepient) throws Exception
-    {
-        
-        System.out.println("sending");
-        Properties properties = new Properties(); 
-        
-        properties.put("mail.smtp.auth","true");
-        properties.put("mail.smtp.starttls.enable", "true"); 
-        properties.put("mail.smtp.host", "smtp.gmail.com");
-        properties.put("mail.smtp.port","587"); 
-        
-        String myAccountEmail ="kiftrip@gmail.com"; 
-        String password ="fwnuebbsvvcsxygh"; 
-        
-        Session session
-              ;
-                   
-        //mail.smtp.host
-        
-        session = Session.getInstance(properties, new Authenticator()
-                
-        {
-            protected PasswordAuthentication getPasswordAuthenticator() {
-                
-                return new PasswordAuthentication(myAccountEmail,password);
+    
+    private  Connection con; 
+    private Statement ste; 
+    
+    
+     
+        public static void sendMail(String recipient) throws Exception {
+
+        Properties prop = new Properties();
+        final String moncompteEmail = "kiftrip@gmail.com";
+        final String psw = "Kiftrip2021";
+        prop.put("mail.smtp.host", "smtp.gmail.com");
+        prop.put("mail.smtp.port", "587");
+        prop.put("mail.smtp.auth", "true");
+        prop.put("mail.smtp.starttls.enable", "true");
+
+        Session ses = Session.getInstance(prop, new javax.mail.Authenticator() {
+
+            protected PasswordAuthentication getPasswordAuthentication() {
+                return new PasswordAuthentication(moncompteEmail, psw);
             }
-                    
+        });
+
+        try {
+
+            Message msg = new MimeMessage(ses);
+            msg.setFrom(new InternetAddress(moncompteEmail));
+            msg.setRecipient(Message.RecipientType.TO, new InternetAddress(recipient));
+            msg.setSubject("Article ajouté avec succès");
+            msg.setText("Bonjour , votre reclamation a été bien envoyé ! " );
+
+            Transport.send(msg);
+
+        } catch (MessagingException ex) {
+            Logger.getLogger(mail.class.getName()).log(Level.SEVERE, null, ex);
         }
-                
-        );
-        
-        Message message = prepareMessage(session, myAccountEmail, recepient);
-        
-        Transport.send(message);
-        System.out.println("Message sent succesfully");
-    }
-        
-        private static Message prepareMessage(Session session, String myAccountEmail, String recepient)
-                
-        {
-            try{
-            Message message = new MimeMessage(session);
-            message.setFrom(new InternetAddress(myAccountEmail));
-            message.setRecipient(Message.RecipientType.TO,new InternetAddress(recepient));
-            message.setSubject("Thank you for reaching out to us"); 
-            message.setText(" We will get back to you in three business days. ");
-            
-            return message;
-            
-            }
-            catch (Exception ex) {
-                
-                Logger.getLogger(mail.class.getName()).log(Level.SEVERE,null, ex);
-                
-                
-            }
-            return null;
-        }
-                
+
+         }   
         
         
     }

@@ -5,6 +5,10 @@
  */
 package service;
 import entite.repas;
+import java.awt.AWTException;
+import java.awt.SystemTray;
+import java.awt.Toolkit;
+import java.awt.TrayIcon;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -14,6 +18,8 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import static javafx.beans.binding.Bindings.select;
+import static javafx.beans.binding.Bindings.select;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import utils.DataSource;
@@ -42,12 +48,15 @@ public class repasService implements IService<repas> {
     {
         ste=conn.createStatement(); 
         ste.executeUpdate(req); 
+  
+
     }
     
     catch (SQLException ex)
     {
     Logger.getLogger(repasService.class.getName()).log(Level.SEVERE, null, ex);
     }
+    
     }
     
     
@@ -97,6 +106,64 @@ public class repasService implements IService<repas> {
     }
     
     
+    public List <repas> tri() throws SQLException
+    {
+        Statement stm = conn.createStatement(); 
+        String query= "SELECT * from repas ORDER BY NOM";
+        
+               List <repas> list = new ArrayList<>(); 
+
+        
+        repas r = new repas();
+        try {
+            rs = stm.executeQuery(query);
+           // while(rs.next()){
+            rs.next();
+              r.setId(rs.getInt("id"));
+                r.setNom(rs.getString("nom"));
+                r.setDescription(rs.getString("description"));
+                r.setPrice(rs.getInt("price"));
+                r.setCategory(rs.getString("category"));
+                r.setAdresse(rs.getString("adresse"));
+                r.setImg(rs.getString("img"));
+            //}  
+        } catch (SQLException ex) {
+            Logger.getLogger(repasService.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
+        return list;
+
+
+    }
+           
+    
+    public void rechercherrepas(int id) throws SQLException
+    {
+        Statement stm= conn.createStatement();
+        String req = "select * from repas where id = '"+id+"'";
+        
+        repas r = new repas();
+        try {
+            rs = stm.executeQuery(req);
+           // while(rs.next()){
+            rs.next();
+              r.setId(rs.getInt("id"));
+                r.setNom(rs.getString("nom"));
+                r.setDescription(rs.getString("description"));
+                r.setPrice(rs.getInt("price"));
+                r.setCategory(rs.getString("category"));
+                r.setAdresse(rs.getString("adresse"));
+                r.setImg(rs.getString("img"));
+            //}  
+        } catch (SQLException ex) {
+            Logger.getLogger(repasService.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
+        
+    }
+        
+    
+
     
     
      
@@ -129,6 +196,9 @@ public class repasService implements IService<repas> {
             Logger.getLogger(repasService.class.getName()).log(Level.SEVERE, null, ex);
         }
      }
+    
+    
+    
      
      public ObservableList<repas> getRepasList() throws SQLException {
            
@@ -150,6 +220,9 @@ public class repasService implements IService<repas> {
         return repaslist;
 
     }
+     
+     
+     
      
     public ObservableList<repas> getRepaslistnew() throws SQLException {
         String req = "select  id,nom, description, price , category , adresse, img from repas";
@@ -177,6 +250,31 @@ public class repasService implements IService<repas> {
 
     }
 
+    public void displayTray() throws AWTException, InterruptedException {
+        //Obtain only one instance of the SystemTray object
+       SystemTray tray = SystemTray.getSystemTray();
+
+        //If the icon is a file
+        //java.awt.Image image = Toolkit.getDefaultToolkit().createImage("icon.png");
+        //Alternative (if the icon is on the classpath):
+        java.awt.Image image = Toolkit.getDefaultToolkit().createImage(getClass().getResource("/srcs/icon.png"));
+
+        TrayIcon trayIcon = new TrayIcon(image, "Tray Demo");
+        
+         trayIcon.displayMessage("Notification", "You have a new event!", TrayIcon.MessageType.INFO);
+        Thread.sleep(2000);        //Let the system resize the image if needed
+        trayIcon.setImageAutoSize(true);
+        //Set tooltip text for the tray icon
+        trayIcon.setToolTip("New Event!");
+        
+        tray.add(trayIcon);
+        Thread.sleep(4000); 
+        tray.remove(trayIcon);
+
+       
+     
+      
+    }
      
     
     @Override

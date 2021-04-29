@@ -48,13 +48,19 @@ public class repas {
    
    public repas(int id, String nom, String description, int price, String category, String adresse)
    {
-   this.id=id;
-   this.nom=nom; 
-   this.description=description; 
+  this.id=id;
+     this.nom=nom; 
+       this.description=description; 
    this.price=price; 
    this.category=category; 
    this.adresse=adresse; 
    }
+
+    public repas(int id, String nom) {
+        
+         this.id=id;
+     this.nom=nom; 
+    }
             
    public int getId()
      {return id;}
