@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.DatePicker?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<AnchorPane id="AnchorPane" prefHeight="405.0" prefWidth="427.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui.FormulairereservationController">
+   <children>
+      <AnchorPane layoutX="1.0" layoutY="-3.0" prefHeight="408.0" prefWidth="449.0" style="-fx-background-color: #ffe28d;">
+         <children>
+            <Label layoutX="89.0" layoutY="182.0" text="nbpersonnes">
+               <font>
+                  <Font size="15.0" />
+               </font>
+            </Label>
+            <Label layoutX="75.0" layoutY="226.0" text=" Date reservation" textFill="#030303">
+               <font>
+                  <Font size="15.0" />
+               </font>
+            </Label>
+            <TextField fx:id="txtnbpersonnes" layoutX="200.0" layoutY="180.0" prefHeight="25.0" prefWidth="174.0" />
+            <DatePicker fx:id="txtdateres" layoutX="200.0" layoutY="224.0" />
+
+            <Text layoutX="138.0" layoutY="102.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Réservez!">
+               <font>
+                  <Font name="Century Gothic" size="41.0" />
+               </font>
+            </Text>
+            <Button layoutX="75.0" layoutY="300.0" mnemonicParsing="false" onAction="#Reservation" prefHeight="29.0" prefWidth="300.0" style="-fx-background-color: #85fc49;" text="confirmer" textFill="WHITE">
+               <font>
+                  <Font name="Century Gothic Bold Italic" size="13.0" />
+               </font>
+            </Button>
+         </children>
+      </AnchorPane>
+   </children>
+</AnchorPane>

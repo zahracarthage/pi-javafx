@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.DatePicker?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.shape.Rectangle?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane id="AnchorPane" prefHeight="517.0" prefWidth="703.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui.ReservationController">
+    <AnchorPane prefHeight="585.0" prefWidth="857.0" style="-fx-background-color: ffff;">
+                     <children>
+                        <TableView fx:id="AffichageResActivites" layoutX="237.0" layoutY="88.0" prefHeight="568.0" prefWidth="485.0">
+                          <columns>
+                            <TableColumn fx:id="colidres" prefWidth="152.0" text="idres" />
+                            <TableColumn fx:id="colnbpersonnes" minWidth="0.0" prefWidth="176.0" text="nbpersonnes" />
+                              <TableColumn fx:id="coldate" minWidth="0.0" prefWidth="162.0" text="date" />
+                          </columns>
+                        </TableView>
+                        <Button fx:id="modifierres" layoutX="753.0" layoutY="349.0" mnemonicParsing="false" onAction="#modifierRes" prefHeight="30.0" prefWidth="298.0" style="-fx-background-color: ffd137;" text="modifier">
+                           <font>
+                              <Font name="System Bold Italic" size="14.0" />
+                           </font></Button>
+                        <Button fx:id="Supprimer" layoutX="754.0" layoutY="386.0" mnemonicParsing="false" onAction="#supprimerRes" prefHeight="30.0" prefWidth="297.0" text="supprimer">
+                           <font>
+                              <Font name="System Bold Italic" size="14.0" />
+                           </font></Button>
+                        <Label layoutX="766.0" layoutY="238.0" text="nbpersonnes" textFill="#ffb638">
+                           <font>
+                              <Font size="15.0" />
+                           </font></Label>
+                        <Label layoutX="752.0" layoutY="282.0" text=" Date reservation" textFill="#ffb638">
+                           <font>
+                              <Font size="15.0" />
+                           </font></Label>
+                        <TextField fx:id="nbpersonnes" layoutX="877.0" layoutY="236.0" prefHeight="25.0" prefWidth="174.0" />
+                        <DatePicker fx:id="dateres" layoutX="877.0" layoutY="280.0" />
+                        <Label text="Gérer les reservations ">
+                           <font>
+                              <Font name="Century Gothic" size="29.0" />
+                           </font>
+                        </Label>
+         <Rectangle arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="593.0" layoutX="-7.0" layoutY="73.0" stroke="BLACK" strokeType="INSIDE" width="229.0" />
+         <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#f5f4f2" height="82.0" layoutX="220.0" layoutY="-5.0" stroke="BLACK" strokeType="INSIDE" width="709.0" />
+         <Rectangle arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="82.0" layoutX="-7.0" layoutY="-5.0" stroke="BLACK" strokeType="INSIDE" width="229.0" />
+         <Rectangle arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="82.0" layoutX="929.0" layoutY="-5.0" stroke="BLACK" strokeType="INSIDE" width="200.0" />
+         <Button fx:id="btn_boutique" layoutX="-7.0" layoutY="77.0" mnemonicParsing="false" onAction="#boutique" prefHeight="39.0" prefWidth="229.0" style="-fx-background-color: ffd137;" text="Gestion article" />
+         <Button fx:id="btn_event" layoutX="-7.0" layoutY="119.0" mnemonicParsing="false" onAction="#event" prefHeight="39.0" prefWidth="229.0" style="-fx-background-color: ffd137;" text="Gestion des commandes" />
+         <Button fx:id="btn_maison" layoutX="-6.0" layoutY="161.0" mnemonicParsing="false" onAction="#maison" prefHeight="39.0" prefWidth="229.0" style="-fx-background-color: ffd137;" text="Gestion Maison D'Hote" />
+         <Button fx:id="btn_repas" layoutX="-6.0" layoutY="203.0" mnemonicParsing="false" onAction="#repas" prefHeight="39.0" prefWidth="229.0" style="-fx-background-color: ffd137;" text="Gestion Repas" />
+         <Button fx:id="btn_ressrep" layoutX="-7.0" layoutY="245.0" mnemonicParsing="false" onAction="#resrepa" prefHeight="39.0" prefWidth="229.0" style="-fx-background-color: ffd137;" text="Gestion reservation repas" />
+         <Button fx:id="btn_rec" layoutX="-6.0" layoutY="287.0" mnemonicParsing="false" onAction="#reclamation" prefHeight="39.0" prefWidth="229.0" style="-fx-background-color: ffd137;" text="Gestion des reclamations" />
+         <Label layoutX="74.0" layoutY="17.0" text="KIFTRIP">
+            <font>
+               <Font name="System Bold" size="27.0" />
+            </font>
+         </Label>
+         <Label layoutX="929.0" layoutY="26.0" prefHeight="21.0" prefWidth="146.0" text="ADMINISTRATEUR">
+            <font>
+               <Font name="System Bold" size="15.0" />
+            </font>
+         </Label>
+         <Label layoutX="357.0" layoutY="7.0" prefHeight="59.0" prefWidth="477.0" text="Gestion des réservations" textAlignment="CENTER" textFill="#a8842a">
+            <font>
+               <Font name="System Bold" size="41.0" />
+            </font>
+         </Label>
+         <Button fx:id="btn_user1" layoutX="-7.0" layoutY="329.0" mnemonicParsing="false" onAction="#user" prefHeight="39.0" prefWidth="229.0" style="-fx-background-color: ffd137;" text="Gestion Utilisateur" />
+         <Button fx:id="btn_activites" layoutX="-6.0" layoutY="371.0" mnemonicParsing="false" onAction="#gestionact" prefHeight="39.0" prefWidth="229.0" style="-fx-background-color: ffd137;" text="Gestion des activités" />
+         <Button fx:id="btn_user111" layoutX="-6.0" layoutY="413.0" mnemonicParsing="false" prefHeight="39.0" prefWidth="229.0" style="-fx-background-color: #ffb638;" text="Gestion reservation activités" />
+         <Button fx:id="btn_user1111" layoutX="-7.0" layoutY="455.0" mnemonicParsing="false" prefHeight="39.0" prefWidth="229.0" style="-fx-background-color: ffd137;" text="Gestion des maison d'hotes" />
+         <Button fx:id="btn_user1112" layoutX="-7.0" layoutY="497.0" mnemonicParsing="false" prefHeight="39.0" prefWidth="229.0" style="-fx-background-color: ffd137;" text="Gestion reservation maison dhotes" />
+         <Button fx:id="btn_user1113" layoutX="-6.0" layoutY="539.0" mnemonicParsing="false" prefHeight="39.0" prefWidth="229.0" style="-fx-background-color: ffd137;" text="Gestion reservation activités" />
+         <Button fx:id="btn_user11131" layoutX="-7.0" layoutY="624.0" mnemonicParsing="false" prefHeight="39.0" prefWidth="229.0" style="-fx-background-color: ffd137;" text="Gestion reservation evenements" />
+         <Button fx:id="btn_user11132" layoutX="-7.0" layoutY="581.0" mnemonicParsing="false" prefHeight="39.0" prefWidth="229.0" style="-fx-background-color: ffd137;" text="Gestion des evenements" />
+                     </children>
+                  </AnchorPane>
+</AnchorPane>

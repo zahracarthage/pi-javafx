@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.DatePicker?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Tab?>
+<?import javafx.scene.control.TabPane?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<AnchorPane id="AnchorPane" prefHeight="626.0" prefWidth="830.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.BackController">
+   <children>
+      <TabPane prefHeight="615.0" prefWidth="830.0" tabClosingPolicy="UNAVAILABLE">
+        <tabs>
+          <Tab text="article">
+               <content>
+                  <AnchorPane prefHeight="200.0" prefWidth="200.0">
+                     <children>
+                      <Button layoutX="156.0" layoutY="516.0" mnemonicParsing="false" onAction="#ajouterarticle" text="ajouter" />
+                        <Label layoutX="34.0" layoutY="80.0" text="nom de l'article" />
+                        <Label layoutX="34.0" layoutY="134.0" text="description" />
+                        <Label layoutX="34.0" layoutY="197.0" text="categorie" />
+                        <Label layoutX="34.0" layoutY="261.0" text="prix" />
+                        <Label fx:id="imagepath" layoutX="29.0" layoutY="322.0" text="imagepath" />
+                        <TextField fx:id="articlenom" layoutX="162.0" layoutY="75.0" />
+                        <TextField fx:id="descriptionarticle" layoutX="162.0" layoutY="140.0" />
+                        <TextField fx:id="categoriearticle" layoutX="162.0" layoutY="203.0" />
+                        <TextField fx:id="prixarticle" layoutX="162.0" layoutY="267.0" />
+                        <ImageView fx:id="imgview" fitHeight="100.0" fitWidth="146.0" layoutX="183.0" layoutY="332.0" pickOnBounds="true" preserveRatio="true" />
+                        <Button fx:id="uploadbtn" layoutX="39.0" layoutY="366.0" mnemonicParsing="false" onAction="#uploadimagearticle" text="upload " />
+                        <TableView fx:id="affichagearticle" layoutX="371.0" layoutY="71.0" prefHeight="323.0" prefWidth="445.0">
+                          <columns>
+                            <TableColumn fx:id="idarticlecol" prefWidth="75.0" text="id" />
+                            <TableColumn fx:id="nomarticlecol" prefWidth="75.0" text="nom" />
+                              <TableColumn fx:id="descriptionarticlecol" prefWidth="97.0" text="description" />
+                              <TableColumn fx:id="categoriarticlecol" prefWidth="85.0" text="categorie" />
+                              <TableColumn fx:id="prixarticlecol" prefWidth="89.0" text="prix" />
+                          </columns>
+                        </TableView>
+                        <Button fx:id="modifierarticlebtn" layoutX="460.0" layoutY="434.0" mnemonicParsing="false" onAction="#modifierarticle" text="modifier" />
+                        <Button fx:id="supprimerarticlebtn" layoutX="616.0" layoutY="434.0" mnemonicParsing="false" onAction="#supprimerarticle" text="supprimer" />
+                     </children>
+                  </AnchorPane>
+               </content>
+            </Tab>
+          <Tab text="commande">
+               <content>
+                  <AnchorPane prefHeight="200.0" prefWidth="200.0">
+                     <children>
+                        <Button fx:id="ajoutercommandebtn" layoutX="125.0" layoutY="415.0" mnemonicParsing="false" onAction="#ajoutercommande" text="ajouter" />
+                        <Button fx:id="modifiercommandebtn" layoutX="450.0" layoutY="431.0" mnemonicParsing="false" onAction="#modifiercommande" text="modifier" />
+                        <Button fx:id="supprimercommandebtn" layoutX="628.0" layoutY="431.0" mnemonicParsing="false" onAction="#supprimercommande" text="supprimer" />
+                        <Label layoutX="42.0" layoutY="78.0" text="date" />
+                        <Label layoutX="40.0" layoutY="146.0" text="quantite" />
+                        <Label layoutX="40.0" layoutY="222.0" text="prix totale" />
+                        <DatePicker fx:id="datecommande" layoutX="133.0" layoutY="73.0" />
+                        <TextField fx:id="quantitecommande" layoutX="133.0" layoutY="141.0" />
+                        <TextField fx:id="prixtcommande" layoutX="133.0" layoutY="217.0" />
+                        <TableView fx:id="affichagecommande" layoutX="408.0" layoutY="72.0" prefHeight="294.0" prefWidth="413.0">
+                          <columns>
+                            <TableColumn fx:id="idcommandecol" prefWidth="75.0" text="id" />
+                            <TableColumn fx:id="quantitecommandecol" prefWidth="75.0" text="quantite" />
+                              <TableColumn fx:id="datecommandecol" prefWidth="75.0" text="date" />
+                              <TableColumn fx:id="prixtcol" prefWidth="75.0" text="prix totale" />
+                          </columns>
+                        </TableView>
+                     </children>
+                  </AnchorPane>
+               </content></Tab>
+        </tabs>
+      </TabPane>
+   </children>
+</AnchorPane>

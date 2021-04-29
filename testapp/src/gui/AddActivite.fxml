@@ -1,0 +1,179 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.Cursor?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.DatePicker?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.effect.ImageInput?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.shape.Rectangle?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane id="AnchorPane" prefHeight="673.0" prefWidth="1136.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.AjouterActiviteController">
+   <children>
+      <AnchorPane layoutX="-2.0" layoutY="-1.0" prefHeight="319.0" prefWidth="303.0">
+         <children>
+            <Rectangle arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="593.0" layoutY="80.0" stroke="BLACK" strokeType="INSIDE" width="229.0" />
+            <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#f5f4f2" height="82.0" layoutX="227.0" layoutY="2.0" stroke="BLACK" strokeType="INSIDE" width="709.0" />
+            <Rectangle arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="82.0" layoutY="2.0" stroke="BLACK" strokeType="INSIDE" width="229.0" />
+            <Rectangle arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="82.0" layoutX="936.0" layoutY="2.0" stroke="BLACK" strokeType="INSIDE" width="200.0" />
+            <GridPane layoutY="84.0" prefHeight="593.0" prefWidth="229.0">
+               <columnConstraints>
+                  <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" />
+               </columnConstraints>
+               <rowConstraints>
+                  <RowConstraints minHeight="10.0" vgrow="SOMETIMES" />
+                  <RowConstraints minHeight="10.0" vgrow="SOMETIMES" />
+                  <RowConstraints minHeight="10.0" vgrow="SOMETIMES" />
+                  <RowConstraints minHeight="10.0" vgrow="SOMETIMES" />
+                  <RowConstraints minHeight="10.0" vgrow="SOMETIMES" />
+                  <RowConstraints minHeight="10.0" vgrow="SOMETIMES" />
+                  <RowConstraints minHeight="10.0" vgrow="SOMETIMES" />
+                  <RowConstraints minHeight="10.0" vgrow="SOMETIMES" />
+                  <RowConstraints minHeight="10.0" vgrow="SOMETIMES" />
+                  <RowConstraints minHeight="10.0" vgrow="SOMETIMES" />
+                  <RowConstraints minHeight="10.0" vgrow="SOMETIMES" />
+                  <RowConstraints minHeight="10.0" vgrow="SOMETIMES" />
+               </rowConstraints>
+               <children>
+                  <Button fx:id="btn_boutique" mnemonicParsing="false" onAction="#boutique" prefHeight="39.0" prefWidth="229.0" style="-fx-background-color: ffd137;" text="Gestion article" />
+                  <Button fx:id="btn_commandes" mnemonicParsing="false" onAction="#commandes" prefHeight="39.0" prefWidth="229.0" style="-fx-background-color: ffd137;" text="Gestion des commandes" GridPane.rowIndex="1" />
+                  <Button fx:id="btn_maison" mnemonicParsing="false" onAction="#maison" prefHeight="39.0" prefWidth="229.0" style="-fx-background-color: ffd137;" text="Gestion Maison D'Hote" GridPane.rowIndex="2" />
+                  <Button fx:id="btn_repas" mnemonicParsing="false" onAction="#repas" prefHeight="39.0" prefWidth="229.0" style="-fx-background-color: ffd137;" text="Gestion Repas" GridPane.rowIndex="3" />
+                  <Button fx:id="btn_resrepas" mnemonicParsing="false" onAction="#resrepas" prefHeight="39.0" prefWidth="229.0" style="-fx-background-color: ffd137;" text="Gestion reservation repas" GridPane.rowIndex="4" />
+                  <Button fx:id="btn_reclamation" mnemonicParsing="false" onAction="#reclamation" prefHeight="39.0" prefWidth="229.0" style="-fx-background-color: ffd137;" text="Gestion des reclamations" GridPane.rowIndex="5" />
+                  <Button fx:id="btn_user1" mnemonicParsing="false" onAction="#user" prefHeight="39.0" prefWidth="229.0" style="-fx-background-color: ffd137;" text="Gestion Utilisateur" GridPane.rowIndex="6" />
+                  <Button fx:id="btn_user11" mnemonicParsing="false" prefHeight="39.0" prefWidth="229.0" style="-fx-background-color: #ffb638;" text="Gestion des activités" GridPane.rowIndex="7" />
+                  <Button fx:id="btn_reserveract" mnemonicParsing="false" onAction="#reservation" prefHeight="39.0" prefWidth="229.0" style="-fx-background-color: ffd137;" text="Gestion reservation activités" GridPane.rowIndex="8" />
+                  <Button fx:id="btn_resmais" mnemonicParsing="false" onAction="#resmaison" prefHeight="39.0" prefWidth="229.0" style="-fx-background-color: ffd137;" text="Gestion reservation maison dhotes" GridPane.rowIndex="9" />
+                  <Button mnemonicParsing="false" prefHeight="39.0" prefWidth="229.0" style="-fx-background-color: ffd137;" text="Gestion reservation evenements" GridPane.rowIndex="11" />
+                  <Button fx:id="btn_evenements" mnemonicParsing="false" onAction="#evenement" prefHeight="39.0" prefWidth="229.0" style="-fx-background-color: ffd137;" text="Gestion des evenements" GridPane.rowIndex="10" />
+               </children>
+            </GridPane>
+            <Label layoutX="81.0" layoutY="24.0" text="KIFTRIP">
+               <font>
+                  <Font name="System Bold" size="27.0" />
+               </font>
+            </Label>
+            <Label layoutX="936.0" layoutY="33.0" prefHeight="21.0" prefWidth="146.0" text="ADMINISTRATEUR">
+               <font>
+                  <Font name="System Bold" size="15.0" />
+               </font>
+            </Label>
+            <Label layoutX="364.0" layoutY="14.0" prefHeight="59.0" prefWidth="401.0" text="Gestion des activités" textAlignment="CENTER" textFill="#a8842a">
+               <font>
+                  <Font name="System Bold" size="41.0" />
+               </font>
+            </Label>
+            <TableView fx:id="affichageActivites" layoutX="540.0" layoutY="120.0" prefHeight="352.0" prefWidth="582.0" style="-fx-background-color: e8e8e8;">
+               <columns>
+                  <TableColumn fx:id="idactcol" prefWidth="49.0" text="id" />
+                  <TableColumn fx:id="nomactcol" prefWidth="101.0" text="nom" />
+                  <TableColumn fx:id="descactcol" prefWidth="114.0" text="description" />
+                  <TableColumn fx:id="categorieactcol" prefWidth="93.0" text="categorie" />
+                  <TableColumn fx:id="dateactcol" prefWidth="75.0" text="date" />
+                  <TableColumn fx:id="prixactcol" prefWidth="77.0" text="prix" />
+                  <TableColumn fx:id="img" prefWidth="75.0" text="image" />
+               </columns>
+            </TableView>
+            <Label layoutX="564.0" layoutY="99.0" text="Recherche" textFill="#ffb638">
+               <font>
+                  <Font name="Candara Bold" size="13.0" />
+               </font>
+            </Label>
+            <TextField fx:id="filterField" layoutX="628.0" layoutY="95.0" onKeyReleased="#on_on" prefHeight="25.0" prefWidth="493.0" />
+            <GridPane layoutX="251.0" layoutY="111.0" prefHeight="375.0" prefWidth="63.0">
+               <columnConstraints>
+                  <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" />
+               </columnConstraints>
+               <rowConstraints>
+                  <RowConstraints minHeight="10.0" vgrow="SOMETIMES" />
+                  <RowConstraints minHeight="10.0" vgrow="SOMETIMES" />
+                  <RowConstraints minHeight="10.0" vgrow="SOMETIMES" />
+                  <RowConstraints minHeight="10.0" vgrow="SOMETIMES" />
+                  <RowConstraints minHeight="10.0" vgrow="SOMETIMES" />
+                  <RowConstraints minHeight="10.0" vgrow="SOMETIMES" />
+               </rowConstraints>
+               <children>
+                  <Label prefHeight="31.0" prefWidth="63.0" text="nom" />
+                  <Label text="description" GridPane.rowIndex="1" />
+                  <Label text="categorie" GridPane.rowIndex="2" />
+                  <Label text="date" GridPane.rowIndex="3" />
+                  <Label text="prix" GridPane.rowIndex="4" />
+                  <Label text="image" GridPane.rowIndex="5" />
+               </children>
+            </GridPane>
+            <GridPane layoutX="322.0" layoutY="120.0" prefHeight="368.0" prefWidth="195.0">
+               <columnConstraints>
+                  <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" />
+               </columnConstraints>
+               <rowConstraints>
+                  <RowConstraints minHeight="10.0" vgrow="SOMETIMES" />
+                  <RowConstraints minHeight="10.0" vgrow="SOMETIMES" />
+                  <RowConstraints minHeight="10.0" vgrow="SOMETIMES" />
+                  <RowConstraints minHeight="10.0" vgrow="SOMETIMES" />
+                  <RowConstraints minHeight="10.0" vgrow="SOMETIMES" />
+                  <RowConstraints minHeight="10.0" vgrow="SOMETIMES" />
+               </rowConstraints>
+               <children>
+                  <TextField fx:id="txtn" />
+                  <DatePicker fx:id="txtda" prefHeight="25.0" prefWidth="195.0" GridPane.rowIndex="3" />
+                  <TextField fx:id="txtp" GridPane.rowIndex="4" />
+                  <Button fx:id="upload" mnemonicParsing="false" onAction="#uploadimg" prefHeight="31.0" prefWidth="197.0" text="upload" GridPane.rowIndex="5" />
+                  <TextField fx:id="activiteDescription" GridPane.rowIndex="1" />
+                  <ComboBox fx:id="activiteCategorie" opacity="0.83" prefHeight="31.0" prefWidth="198.0" GridPane.rowIndex="2" />
+               </children>
+            </GridPane>
+            <Button fx:id="supprimeractbtn" layoutX="1089.0" layoutY="485.0" mnemonicParsing="false" onAction="#SupprimerActivite" prefHeight="39.0" prefWidth="33.0" style="-fx-background-color: #f8c471;" text="supprimer" textFill="#070707">
+               <font>
+                  <Font name="System Bold Italic" size="13.0" />
+               </font>
+               <effect>
+                  <ImageInput>
+                     <source>
+                        <Image url="file:/C:/Users/ellil/Downloads/remove.png" />
+                     </source>
+                  </ImageInput>
+               </effect>
+            </Button>
+            <Button fx:id="btnajouter" layoutX="251.0" layoutY="486.0" mnemonicParsing="false" onAction="#AjouterActivite" prefHeight="31.0" prefWidth="267.0" style="-fx-background-color: #85fc49;" text="Ajouter une activité" textFill="WHITE">
+               <font>
+                  <Font name="System Bold Italic" size="14.0" />
+               </font>
+            </Button>
+            <ImageView fx:id="imagefield" fitHeight="147.0" fitWidth="567.0" layoutX="257.0" layoutY="521.0" pickOnBounds="true" preserveRatio="true" />
+            <Button fx:id="modifieractbtn" layoutX="541.0" layoutY="486.0" mnemonicParsing="false" onAction="#ModifierActivite" prefHeight="31.0" prefWidth="541.0" style="-fx-background-color: fcb049;" text="modifier" textFill="WHITE">
+               <font>
+                  <Font name="System Bold Italic" size="13.0" />
+               </font>
+            </Button>
+            <Button layoutX="847.0" layoutY="551.0" mnemonicParsing="false" onAction="#OnClickedPrint" prefHeight="29.0" prefWidth="274.0" text="imprimer">
+               <font>
+                  <Font name="System Bold Italic" size="13.0" />
+               </font>
+               <cursor>
+                  <Cursor fx:constant="V_RESIZE" />
+               </cursor>
+            </Button>
+            <Button fx:id="stat" layoutX="847.0" layoutY="608.0" mnemonicParsing="false" onAction="#OnClickedStatistique" prefHeight="30.0" prefWidth="274.0" text="Statistiques">
+               <font>
+                  <Font name="System Bold Italic" size="14.0" />
+               </font>
+               <cursor>
+                  <Cursor fx:constant="V_RESIZE" />
+               </cursor>
+            </Button>
+            <Button layoutX="602.0" layoutY="546.0" mnemonicParsing="false" onAction="#front" text="front" />
+         </children>
+      </AnchorPane>
+   </children>
+</AnchorPane>

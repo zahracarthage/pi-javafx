@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.image.*?>
+<?import javafx.scene.text.*?>
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui.LoginUserController">
+   <children>
+      <Label layoutX="292.0" layoutY="126.0" text="Email :">
+         <font>
+            <Font name="Arial Bold" size="14.0" />
+         </font></Label>
+      <Label layoutX="284.0" layoutY="209.0" text="Password :">
+         <font>
+            <Font name="Arial Bold" size="14.0" />
+         </font></Label>
+      <TextField fx:id="emailfield" layoutX="364.0" layoutY="122.0" />
+      <Button layoutX="366.0" layoutY="299.0" mnemonicParsing="false" onAction="#Login" prefHeight="26.0" prefWidth="118.0" style="-fx-background-color: #f8e21c;" text="login" />
+      <Text fill="#2414d7" layoutX="329.0" layoutY="356.0" onMouseClicked="#GoToRegister" strokeType="OUTSIDE" strokeWidth="0.0" text="Vous n'avez pas encore un compte ?" />
+      <ImageView fitHeight="425.0" fitWidth="349.0" layoutX="-70.0" layoutY="-1.0">
+         <image>
+            <Image url="@../Images/Tunisia2.png" />
+         </image>
+      </ImageView>
+      <Text layoutX="339.0" layoutY="51.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Login" textAlignment="CENTER" wrappingWidth="173.0">
+         <font>
+            <Font name="Bauhaus 93" size="26.0" />
+         </font>
+      </Text>
+      <PasswordField fx:id="pwdfield" layoutX="364.0" layoutY="205.0" />
+   </children>
+</AnchorPane>

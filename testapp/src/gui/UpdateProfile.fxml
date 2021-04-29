@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.image.*?>
+<?import javafx.scene.text.*?>
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui.UpdateProfileController">
+   <children>
+      <SplitPane dividerPositions="0.29797979797979796" prefHeight="400.0" prefWidth="600.0">
+        <items>
+          <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="160.0" prefWidth="100.0">
+               <children>
+                  <ImageView fx:id="ImageUserLogedIn" fitHeight="114.0" fitWidth="149.0" layoutX="13.0" layoutY="24.0" pickOnBounds="true" preserveRatio="true" />
+                  <Label fx:id="UserName" layoutX="23.0" layoutY="152.0" prefHeight="17.0" prefWidth="119.0" />
+                  <Text layoutX="54.0" layoutY="227.0" onMouseClicked="#UpdateProfile" strokeType="OUTSIDE" strokeWidth="0.0" text="Modifier Profile" />
+                  <Text layoutX="54.0" layoutY="266.0" onMouseClicked="#ResetPassword" strokeType="OUTSIDE" strokeWidth="0.0" text="Modifier Password" />
+                  <Text layoutX="57.0" layoutY="312.0" onMouseClicked="#DeleteAccount" strokeType="OUTSIDE" strokeWidth="0.0" text="Supprimer le compte" />
+                  <Text layoutX="60.0" layoutY="354.0" onMouseClicked="#Logout" strokeType="OUTSIDE" strokeWidth="0.0" text="Se deconnecter" />
+                  <ImageView fitHeight="28.0" fitWidth="29.0" layoutX="15.0" layoutY="209.0">
+                     <image>
+                        <Image url="@../Images/utilisateur.png" />
+                     </image>
+                  </ImageView>
+                  <ImageView fitHeight="28.0" fitWidth="29.0" layoutX="15.0" layoutY="246.0">
+                     <image>
+                        <Image url="@../Images/password.png" />
+                     </image>
+                  </ImageView>
+                  <ImageView fitHeight="28.0" fitWidth="29.0" layoutX="14.0" layoutY="293.0">
+                     <image>
+                        <Image url="@../Images/delete.png" />
+                     </image>
+                  </ImageView>
+                  <ImageView fitHeight="28.0" fitWidth="29.0" layoutX="21.0" layoutY="340.0">
+                     <image>
+                        <Image url="@../Images/logout.png" />
+                     </image>
+                  </ImageView>
+               </children>
+            </AnchorPane>
+          <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="160.0" prefWidth="100.0">
+               <children>
+                  <Label layoutX="64.0" layoutY="32.0" text="Modifier vos informations personnelles">
+                     <font>
+                        <Font name="Arial Bold Italic" size="17.0" />
+                     </font>
+                  </Label>
+                  <Label layoutX="107.0" layoutY="159.0" text="Username :" />
+                  <Label layoutX="107.0" layoutY="231.0" text="Email :" />
+                  <TextField fx:id="UsernameField" layoutX="188.0" layoutY="155.0" />
+                  <TextField fx:id="EmailField" layoutX="188.0" layoutY="227.0" />
+                  <Button layoutX="209.0" layoutY="341.0" mnemonicParsing="false" onAction="#Modifier" style="-fx-background-color: #019053;" text="Modifier" />
+                  <Button layoutX="85.0" layoutY="294.0" mnemonicParsing="false" onAction="#fileChooser" style="-fx-background-color: #A1D2F0;" text="upload" />
+                  <Label fx:id="ImageName" layoutX="160.0" layoutY="298.0" prefHeight="17.0" prefWidth="98.0" />
+                  <ImageView fx:id="imageUpdate" fitHeight="79.0" fitWidth="105.0" layoutX="291.0" layoutY="259.0" pickOnBounds="true" preserveRatio="true" />
+                  <Button layoutX="14.0" layoutY="341.0" mnemonicParsing="false" onAction="#BackToInterface" text="Go Back" />
+               </children></AnchorPane>
+        </items>
+      </SplitPane>
+   </children>
+</AnchorPane>

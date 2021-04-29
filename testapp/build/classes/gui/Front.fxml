@@ -1,0 +1,148 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.shape.Rectangle?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<AnchorPane id="AnchorPane" prefHeight="598.0" prefWidth="818.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui.FrontController">
+   <children>
+      <AnchorPane layoutX="-16.0" prefHeight="604.0" prefWidth="1152.0" style="-fx-background-color: fafafa;">
+         <children>
+            <TableView fx:id="listeActivites" layoutX="277.0" layoutY="166.0" prefHeight="368.0" prefWidth="573.0" style="-fx-background-color: eeeded;">
+               <columns>
+                  <TableColumn fx:id="idactcol" prefWidth="49.0" text="id" />
+                  <TableColumn fx:id="nomactcol" prefWidth="101.0" text="nom" />
+                  <TableColumn fx:id="descactcol" prefWidth="114.0" text="description" />
+                  <TableColumn fx:id="categorieactcol" prefWidth="93.0" text="categorie" />
+                  <TableColumn fx:id="dateactcol" prefWidth="75.0" text="date" />
+                  <TableColumn fx:id="prixactcol" prefWidth="77.0" text="prix" />
+                  <TableColumn fx:id="img" prefWidth="75.0" text="image" />
+               </columns>
+            </TableView>
+            <Text fill="#ffb638" layoutX="277.0" layoutY="151.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Liste des activités">
+               <font>
+                  <Font name="Century Gothic" size="25.0" />
+               </font>
+            </Text>
+            <Button layoutX="886.0" layoutY="549.0" mnemonicParsing="false" onAction="#OnClickedréserver" prefHeight="26.0" prefWidth="248.0" style="-fx-background-color: #ffb638;" text="Réserver cette activité" />
+            <Button layoutX="277.0" layoutY="550.0" mnemonicParsing="false" onAction="#Map" style="-fx-background-color: #ffb638;" text="localisation">
+               <font>
+                  <Font name="Century Gothic" size="12.0" />
+               </font></Button>
+            <Rectangle arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="526.0" layoutX="14.0" layoutY="78.0" stroke="BLACK" strokeType="INSIDE" width="229.0" />
+            <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#f5f4f2" height="82.0" layoutX="241.0" stroke="BLACK" strokeType="INSIDE" width="709.0" />
+            <Rectangle arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="82.0" layoutX="14.0" stroke="BLACK" strokeType="INSIDE" width="229.0" />
+            <Rectangle arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="82.0" layoutX="950.0" stroke="BLACK" strokeType="INSIDE" width="200.0" />
+            <GridPane layoutX="14.0" layoutY="77.0" prefHeight="526.0" prefWidth="229.0">
+               <columnConstraints>
+                  <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" />
+               </columnConstraints>
+               <rowConstraints>
+                  <RowConstraints minHeight="10.0" vgrow="SOMETIMES" />
+                  <RowConstraints minHeight="10.0" vgrow="SOMETIMES" />
+                  <RowConstraints minHeight="10.0" vgrow="SOMETIMES" />
+                  <RowConstraints minHeight="10.0" vgrow="SOMETIMES" />
+                  <RowConstraints minHeight="10.0" vgrow="SOMETIMES" />
+                  <RowConstraints minHeight="10.0" vgrow="SOMETIMES" />
+               </rowConstraints>
+               <children>
+                  <Button mnemonicParsing="false" prefHeight="82.0" prefWidth="229.0" style="-fx-background-color: ffd137;" text="Boutique">
+                     <font>
+                        <Font size="17.0" />
+                     </font>
+                  </Button>
+                  <Button mnemonicParsing="false" prefHeight="82.0" prefWidth="229.0" style="-fx-background-color: ffd137;" text=" Maisons D'Hotes" GridPane.rowIndex="1">
+                     <font>
+                        <Font size="17.0" />
+                     </font>
+                  </Button>
+                  <Button mnemonicParsing="false" prefHeight="82.0" prefWidth="229.0" style="-fx-background-color: ffd137;" text="Repas" GridPane.rowIndex="2">
+                     <font>
+                        <Font size="17.0" />
+                     </font>
+                  </Button>
+                  <Button fx:id="btn_user11" mnemonicParsing="false" prefHeight="82.0" prefWidth="229.0" style="-fx-background-color: #ffb638;" text="Activités" GridPane.rowIndex="3">
+                     <font>
+                        <Font size="17.0" />
+                     </font>
+                  </Button>
+                  <Button mnemonicParsing="false" prefHeight="82.0" prefWidth="229.0" style="-fx-background-color: ffd137;" text="Evenements" GridPane.rowIndex="4">
+                     <font>
+                        <Font size="17.0" />
+                     </font>
+                  </Button>
+                  <Button mnemonicParsing="false" prefHeight="82.0" prefWidth="229.0" style="-fx-background-color: ffd137;" text="Envoyer une réclamation" GridPane.rowIndex="5">
+                     <font>
+                        <Font size="17.0" />
+                     </font>
+                  </Button>
+               </children>
+            </GridPane>
+            <Label layoutX="95.0" layoutY="22.0" text="KIFTRIP">
+               <font>
+                  <Font name="System Bold" size="27.0" />
+               </font>
+            </Label>
+            <Label layoutX="950.0" layoutY="31.0" prefHeight="21.0" prefWidth="146.0" text="Utilisateur">
+               <font>
+                  <Font name="System Bold" size="21.0" />
+               </font>
+            </Label>
+            <Label layoutX="378.0" layoutY="12.0" prefHeight="59.0" prefWidth="401.0" text="Gestion des activités" textAlignment="CENTER" textFill="#a8842a">
+               <font>
+                  <Font name="System Bold" size="41.0" />
+               </font>
+            </Label>
+            <GridPane layoutX="823.0" layoutY="158.0" prefHeight="368.0" prefWidth="63.0">
+               <columnConstraints>
+                  <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" />
+               </columnConstraints>
+               <rowConstraints>
+                  <RowConstraints minHeight="10.0" vgrow="SOMETIMES" />
+                  <RowConstraints minHeight="10.0" vgrow="SOMETIMES" />
+                  <RowConstraints minHeight="10.0" vgrow="SOMETIMES" />
+                  <RowConstraints minHeight="10.0" vgrow="SOMETIMES" />
+                  <RowConstraints minHeight="10.0" vgrow="SOMETIMES" />
+                  <RowConstraints minHeight="10.0" vgrow="SOMETIMES" />
+               </rowConstraints>
+            </GridPane>
+            <GridPane layoutX="912.0" layoutY="158.0" prefHeight="368.0" prefWidth="149.0">
+               <columnConstraints>
+                  <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" />
+               </columnConstraints>
+               <rowConstraints>
+                  <RowConstraints minHeight="10.0" vgrow="SOMETIMES" />
+                  <RowConstraints minHeight="10.0" vgrow="SOMETIMES" />
+                  <RowConstraints minHeight="10.0" vgrow="SOMETIMES" />
+                  <RowConstraints minHeight="10.0" vgrow="SOMETIMES" />
+                  <RowConstraints minHeight="10.0" vgrow="SOMETIMES" />
+                  <RowConstraints minHeight="10.0" vgrow="SOMETIMES" />
+               </rowConstraints>
+            </GridPane>
+            <TextField fx:id="prix" layoutX="979.0" layoutY="423.0" />
+            <TextField fx:id="nom" layoutX="979.0" layoutY="178.0" />
+            <TextField fx:id="description" layoutX="979.0" layoutY="240.0" />
+            <TextField fx:id="image" layoutX="979.0" layoutY="484.0" />
+            <TextField fx:id="categorie" layoutX="979.0" layoutY="362.0" />
+            <TextField fx:id="date" layoutX="979.0" layoutY="301.0" />
+            <Label layoutX="896.0" layoutY="182.0" prefHeight="31.0" prefWidth="63.0" text="nom" />
+            <Label layoutX="896.0" layoutY="255.0" text="description" />
+            <Label layoutX="896.0" layoutY="373.0" text="categorie" />
+            <Label layoutX="896.0" layoutY="314.0" text="date" />
+            <Label layoutX="896.0" layoutY="432.0" text="prix" />
+            <Label layoutX="896.0" layoutY="491.0" text="image" />
+            <TextField fx:id="id" layoutX="977.0" layoutY="141.0" />
+            <Label layoutX="894.0" layoutY="145.0" prefHeight="31.0" prefWidth="63.0" text="id" />
+         </children>
+      </AnchorPane>
+   </children>
+</AnchorPane>
