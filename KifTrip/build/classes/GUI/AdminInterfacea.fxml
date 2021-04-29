@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.image.*?>
+<?import javafx.scene.text.*?>
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="GUI.AdminInterfaceaController">
+   <children>
+      <Label layoutX="119.0" layoutY="14.0" text="vous êtes inscrit en tant qu'administrateur">
+         <font>
+            <Font name="Arial Bold Italic" size="19.0" />
+         </font>
+      </Label>
+      <ImageView fitHeight="150.0" fitWidth="200.0" layoutX="192.0" layoutY="101.0" pickOnBounds="true" preserveRatio="true" />
+      <Button layoutX="275.0" layoutY="350.0" mnemonicParsing="false" onAction="#GoToProfile" text="Profile" />
+      <ImageView fitHeight="63.0" fitWidth="66.0" layoutX="526.0" layoutY="5.0">
+         <image>
+            <Image url="@../Images/Tunisia.png" />
+         </image>
+      </ImageView>
+      <TableView fx:id="UsersView" layoutX="32.0" layoutY="76.0" prefHeight="200.0" prefWidth="548.0">
+        <columns>
+          <TableColumn fx:id="IdCol" prefWidth="51.0" text="ID" />
+          <TableColumn fx:id="UserNameCol" prefWidth="145.0" text="UserName" />
+            <TableColumn fx:id="EmailCol" prefWidth="174.0" text="Email" />
+            <TableColumn fx:id="RoleCol" prefWidth="84.0" text="Role" />
+            <TableColumn fx:id="ActionCol" prefWidth="93.0" text="Action" />
+        </columns>
+      </TableView>
+   </children>
+</AnchorPane>
