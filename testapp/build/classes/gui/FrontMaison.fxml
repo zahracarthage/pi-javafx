@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.shape.Rectangle?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<AnchorPane id="AnchorPane" prefHeight="556.0" prefWidth="688.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui.FrontMaisonController">
+   <children>
+      <AnchorPane prefHeight="615.0" prefWidth="946.0">
+         <children>
+            <TableView fx:id="tabMaison" layoutX="269.0" layoutY="140.0" prefHeight="376.0" prefWidth="586.0">
+               <columns>
+                  <TableColumn fx:id="colID" prefWidth="49.0" style="-fx-background-color: ffd137;" text="Id" />
+                  <TableColumn fx:id="colNom" prefWidth="101.0" style="-fx-background-color: ffd137;" text="Nom" />
+                  <TableColumn fx:id="colAdresse" prefWidth="114.0" style="-fx-background-color: ffd137;" text="Adresse" />
+                  <TableColumn fx:id="colNum" prefWidth="93.0" style="-fx-background-color: ffd137;" text="Num" />
+                  <TableColumn fx:id="colPrix" prefWidth="75.0" style="-fx-background-color: ffd137;" text="Prix" />
+                  <TableColumn fx:id="colNote" prefWidth="77.0" style="-fx-background-color: ffd137;" text="Note" />
+                  <TableColumn fx:id="colImage" prefWidth="75.0" style="-fx-background-color: ffd137;" text="image" />
+               </columns>
+            </TableView>
+            <Text fill="#ffb638" layoutX="269.0" layoutY="124.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Liste des maisons">
+               <font>
+                  <Font name="Century Gothic" size="25.0" />
+               </font>
+            </Text>
+            <Button layoutX="666.0" layoutY="538.0" mnemonicParsing="false" onAction="#OnClickedréserver" prefHeight="39.0" prefWidth="150.0" style="-fx-background-color: ffd137;" text="Réserver une maison">
+               <font>
+                  <Font size="14.0" />
+               </font></Button>
+            <Rectangle arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="82.0" stroke="BLACK" strokeType="INSIDE" width="229.0" />
+            <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#f5f4f2" height="82.0" layoutX="229.0" stroke="BLACK" strokeType="INSIDE" width="709.0" />
+            <Label layoutX="71.0" layoutY="22.0" text="KIFTRIP">
+               <font>
+                  <Font name="System Bold" size="27.0" />
+               </font>
+            </Label>
+            <Button layoutY="82.0" mnemonicParsing="false" prefHeight="82.0" prefWidth="229.0" style="-fx-background-color: ffd137;" text="Boutique">
+               <font>
+                  <Font size="17.0" />
+               </font>
+            </Button>
+            <Button layoutY="171.0" mnemonicParsing="false" prefHeight="75.0" prefWidth="229.0" style="-fx-background-color: #ffb638;" text=" Maisons D'Hotes">
+               <font>
+                  <Font size="17.0" />
+               </font>
+            </Button>
+            <Button layoutY="250.0" mnemonicParsing="false" prefHeight="82.0" prefWidth="229.0" style="-fx-background-color: ffd137;" text="Repas">
+               <font>
+                  <Font size="17.0" />
+               </font>
+            </Button>
+            <Button fx:id="btn_event" layoutY="337.0" mnemonicParsing="false" onAction="#event" prefHeight="75.0" prefWidth="229.0" style="-fx-background-color: ffd137;" text="Activités">
+               <font>
+                  <Font size="17.0" />
+               </font>
+            </Button>
+            <Button layoutY="417.0" mnemonicParsing="false" prefHeight="75.0" prefWidth="229.0" style="-fx-background-color: ffd137;" text="Evenements">
+               <font>
+                  <Font size="17.0" />
+               </font>
+            </Button>
+            <Button layoutY="499.0" mnemonicParsing="false" prefHeight="75.0" prefWidth="229.0" style="-fx-background-color: ffd137;" text="Envoyer une réclamation">
+               <font>
+                  <Font size="17.0" />
+               </font>
+            </Button>
+            <Text fill="#a8842a" layoutX="432.0" layoutY="54.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Gestion  maison hotes ">
+               <font>
+                  <Font name="System Bold" size="36.0" />
+               </font>
+            </Text>
+            
+            
+         </children>
+      </AnchorPane>
+   </children>
+</AnchorPane>

@@ -6,6 +6,7 @@
 package gui;
 
 
+import controller.AjouterActiviteController;
 import service.ActivitesService;
 import service.ResactivitesService;
 import entite.Activites;
@@ -26,6 +27,7 @@ import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert;
@@ -87,6 +89,8 @@ public class FrontController implements Initializable {
     @FXML
     private TextField id;
     private ComboBox<String> idetranger;
+    @FXML
+    private Button btn_mais;
   
     
     /**
@@ -174,14 +178,14 @@ public class FrontController implements Initializable {
     private void OnClickedréserver(ActionEvent event) {
         try {
                    
-            Parent parent = FXMLLoader.load(getClass().getResource("/GUI/Formulairereservation.fxml"));
+            Parent parent = FXMLLoader.load(getClass().getResource("/gui/Formulairereservation.fxml"));
             Scene scene = new Scene(parent);
             
             Stage stage = new Stage();
             
             stage.setTitle("Réserver");
             stage.setScene(scene);
-            stage.getIcons().add(new Image("/images/logo.png"));
+            stage.getIcons().add(new Image("/Images/logo.png"));
             stage.initStyle(StageStyle.UTILITY);
           
             stage.show();
@@ -197,10 +201,10 @@ public class FrontController implements Initializable {
          
         final WebView webView = new WebView();
         final WebEngine webEngine = webView.getEngine();
-        webEngine.load(getClass().getResource("/GUI/googleMaps.html").toString());
+        webEngine.load(getClass().getResource("/gui/googleMaps.html").toString());
        
         // create scene
-        stage.getIcons().add(new Image("/images/logo.png"));
+        stage.getIcons().add(new Image("/Images/logo.png"));
         stage.setTitle("localisation");
         Scene scene = new Scene(webView,1000,700, Color.web("#666970"));
         stage.setScene(scene);
@@ -209,6 +213,23 @@ public class FrontController implements Initializable {
     }
     static { // use system proxy settings when standalone application
         System.setProperty("java.net.useSystemProxies", "true");
+    }
+
+    @FXML
+    private void maison(ActionEvent event) {
+          try {
+           Parent exercices_parent = FXMLLoader.load(getClass().getResource("/gui/FrontMaison.fxml"));
+           Scene ex_section_scene = new Scene(exercices_parent);
+           Stage second_stage =(Stage) ((Node) event.getSource()).getScene().getWindow();
+           
+           second_stage.setScene(ex_section_scene);
+           second_stage.show();
+                   
+                   
+                   } catch (IOException ex) {
+            Logger.getLogger(AjouterActiviteController.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
     }
 
   

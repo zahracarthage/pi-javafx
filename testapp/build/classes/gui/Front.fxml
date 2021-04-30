@@ -60,7 +60,7 @@
                         <Font size="17.0" />
                      </font>
                   </Button>
-                  <Button mnemonicParsing="false" prefHeight="82.0" prefWidth="229.0" style="-fx-background-color: ffd137;" text=" Maisons D'Hotes" GridPane.rowIndex="1">
+                  <Button fx:id="btn_mais" mnemonicParsing="false" onAction="#maison" prefHeight="82.0" prefWidth="229.0" style="-fx-background-color: ffd137;" text=" Maisons D'Hotes" GridPane.rowIndex="1">
                      <font>
                         <Font size="17.0" />
                      </font>

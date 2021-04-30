@@ -140,5 +140,7 @@
       </TableView>
       <TextField fx:id="searchrepas" layoutX="564.0" layoutY="165.0" onAction="#searchrepas" />
       <ImageView fx:id="imagefield" fitHeight="178.0" fitWidth="150.0" layoutX="382.0" layoutY="508.0" pickOnBounds="true" preserveRatio="true" />
+      <Button layoutX="583.0" layoutY="617.0" mnemonicParsing="false" text="reserver" />
+      <ImageView fx:id="img" fitHeight="150.0" fitWidth="160.0" layoutX="353.0" layoutY="522.0" pickOnBounds="true" preserveRatio="true" />
    </children>
 </AnchorPane>

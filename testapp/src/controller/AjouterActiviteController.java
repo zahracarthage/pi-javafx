@@ -747,14 +747,55 @@ public class AjouterActiviteController implements Initializable {
 
     @FXML
     private void boutique(ActionEvent event) {
+        
+          try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/views/commande.fxml"));
+            Parent root =loader.load();
+             
+            Stage stage = new Stage();
+            stage.setScene(new Scene(root));  
+            stage.show();
+          //  stage.setTitle("Blocker/Deblocker Utilisateur");
+            
+                 
+        } catch (IOException ex) {
+            System.out.println(ex.getMessage());
+        }
     }
 
     @FXML
     private void commandes(ActionEvent event) {
+        
+          try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/views/commande.fxml"));
+            Parent root =loader.load();
+             
+            Stage stage = new Stage();
+            stage.setScene(new Scene(root));  
+            stage.show();
+          //  stage.setTitle("Blocker/Deblocker Utilisateur");
+            
+                 
+        } catch (IOException ex) {
+            System.out.println(ex.getMessage());
+        }
+        
     }
 
     @FXML
     private void maison(ActionEvent event) {
+         try {
+           Parent exercices_parent = FXMLLoader.load(getClass().getResource("/gui/MaisonView.fxml"));
+           Scene ex_section_scene = new Scene(exercices_parent);
+           Stage second_stage =(Stage) ((Node) event.getSource()).getScene().getWindow();
+           
+           second_stage.setScene(ex_section_scene);
+           second_stage.show();
+                   
+                   
+                   } catch (IOException ex) {
+            Logger.getLogger(AjouterActiviteController.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
 
     @FXML
@@ -823,6 +864,18 @@ public class AjouterActiviteController implements Initializable {
 
     @FXML
     private void resmaison(ActionEvent event) {
+          try{
+           Parent exercices_parent = FXMLLoader.load(getClass().getResource("/gui/ReservationView.fxml"));
+           Scene ex_section_scene = new Scene(exercices_parent);
+           Stage second_stage =(Stage) ((Node) event.getSource()).getScene().getWindow();
+           
+           second_stage.setScene(ex_section_scene);
+           second_stage.show();
+                   
+                   
+                   } catch (IOException ex) {
+            Logger.getLogger(AjouterActiviteController.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
 
     @FXML

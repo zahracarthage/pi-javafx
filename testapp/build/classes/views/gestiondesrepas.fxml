@@ -80,6 +80,6 @@
       <TextField fx:id="searchrepas" layoutX="554.0" layoutY="155.0" onAction="#searchrepas" />
       <Button fx:id="qr" layoutX="989.0" layoutY="723.0" mnemonicParsing="false" onAction="#generateqr" prefHeight="33.0" prefWidth="135.0" text="Generer QR" />
       <ImageView fx:id="imagefield" fitHeight="178.0" fitWidth="150.0" layoutX="372.0" layoutY="498.0" pickOnBounds="true" preserveRatio="true" />
-      <Button fx:id="stat" layoutX="1047.0" layoutY="148.0" mnemonicParsing="false" style="-fx-background-color: E8E425;" text="stat" />
+      <Button fx:id="stat" layoutX="1047.0" layoutY="148.0" mnemonicParsing="false" onAction="#stat" style="-fx-background-color: E8E425;" text="stat" />
    </children>
 </AnchorPane>
