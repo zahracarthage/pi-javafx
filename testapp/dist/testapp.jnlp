@@ -8,6 +8,8 @@
   </information>
   <resources>
     <j2se version="1.6+" href="http://java.sun.com/products/autodl/j2se"/>
+    <jar href="lib\activation.jar" size="124332" download="eager" />
+    <jar href="lib\itext-1.3.1.jar" size="1553403" download="eager" />
     <jar href="lib\itextpdf-5.5.9.jar" size="2287148" download="eager" />
     <jar href="lib\java-json.jar" size="84697" download="eager" />
     <jar href="lib\javase-2.2.jar" size="39692" download="eager" />
@@ -18,7 +20,7 @@
     <jar href="lib\mysql-connector.jar" size="540852" download="eager" />
     <jar href="lib\owm-japis-2.5.0.3.jar" size="80276" download="eager" />
     <jar href="lib\zxing-core-2.0.jar" size="432773" download="eager" />
-    <jar href="testapp.jar" size="474789" download="eager" />
+    <jar href="testapp.jar" size="494431" download="eager" />
   </resources>
   <applet-desc  width="800" height="600" main-class="com.javafx.main.NoJavaFXFallback"  name="testapp" >
     <param name="requiredFXVersion" value="8.0+"/>

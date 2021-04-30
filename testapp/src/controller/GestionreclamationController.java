@@ -312,8 +312,24 @@ public class GestionreclamationController implements Initializable {
 
     @FXML
     private void evenement(ActionEvent event) {
+        try {
+           Parent exercices_parent = FXMLLoader.load(getClass().getResource("/gui/EventBack.fxml"));
+           Scene ex_section_scene = new Scene(exercices_parent);
+           Stage second_stage =(Stage) ((Node) event.getSource()).getScene().getWindow();
+           
+           second_stage.setScene(ex_section_scene);
+           second_stage.show();
+                   
+                   
+                   } catch (IOException ex) {
+            Logger.getLogger(AjouterActiviteController.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
 
+    
+    
+    
+    
     @FXML
     private void ajouterreclamation(ActionEvent event) throws Exception {
           reclamation rec = new reclamation(reclamationnom.getText(),reclamationprenom.getText(),reclamationemail.getText(),reclamationsujet.getValue().toString(),reclamationmessage.getText());

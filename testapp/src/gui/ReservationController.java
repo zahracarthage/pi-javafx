@@ -74,23 +74,17 @@ public class ReservationController implements Initializable {
     @FXML
     private Button btn_user1;
     @FXML
-    private Button btn_user111;
-    @FXML
-    private Button btn_user1111;
-    @FXML
-    private Button btn_user1112;
-    @FXML
-    private Button btn_user1113;
-    @FXML
-    private Button btn_user11131;
-    @FXML
-    private Button btn_user11132;
-    @FXML
     private Button btn_activites;
     @FXML
     private Button btn_ressrep;
     @FXML
     private Button btn_rec;
+    @FXML
+    private Button btn_commande;
+    @FXML
+    private Button btn_resact;
+    @FXML
+    private Button btn_resmais;
 
     /**
      * Initializes the controller class.
@@ -203,6 +197,18 @@ public class ReservationController implements Initializable {
 
     @FXML
     private void event(ActionEvent event) {
+        try {
+           Parent exercices_parent = FXMLLoader.load(getClass().getResource("/gui/EventBack.fxml"));
+           Scene ex_section_scene = new Scene(exercices_parent);
+           Stage second_stage =(Stage) ((Node) event.getSource()).getScene().getWindow();
+           
+           second_stage.setScene(ex_section_scene);
+           second_stage.show();
+                   
+                   
+                   } catch (IOException ex) {
+            Logger.getLogger(AjouterActiviteController.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
 
     @FXML
@@ -289,6 +295,18 @@ public class ReservationController implements Initializable {
                    } catch (IOException ex) {
             Logger.getLogger(AjouterActiviteController.class.getName()).log(Level.SEVERE, null, ex);
         }
+    }
+
+    @FXML
+    private void commande(ActionEvent event) {
+    }
+
+    @FXML
+    private void resact(ActionEvent event) {
+    }
+
+    @FXML
+    private void resmais(ActionEvent event) {
     }
     }
     
