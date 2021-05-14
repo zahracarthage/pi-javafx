@@ -41,6 +41,7 @@ import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
 import service.reservationrepasService;
+import utils.mail;
 
 /**
  * FXML Controller class
@@ -419,7 +420,7 @@ public class GestionresrepasController implements Initializable {
     }
 
     @FXML
-    private void ajoutreservation(ActionEvent event) throws SQLException {
+    private void ajoutreservation(ActionEvent event) throws SQLException, Exception {
         
                     String idrep = idr.getValue();
                     int idrepas = Integer.parseInt(idrep);
@@ -468,6 +469,7 @@ public class GestionresrepasController implements Initializable {
                 alert.show();
             }
          affichageresrep.setItems(rrs.getresrepasliste());
+          mail.sendMail(emailresrep.getText());
     }
 
     @FXML

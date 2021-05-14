@@ -52,7 +52,7 @@ public class mail {
             Message msg = new MimeMessage(ses);
             msg.setFrom(new InternetAddress(moncompteEmail));
             msg.setRecipient(Message.RecipientType.TO, new InternetAddress(recipient));
-            msg.setSubject("Article ajouté avec succès");
+            msg.setSubject("Votre reservation a été faite");
             msg.setText("Bonjour , votre reclamation a été bien envoyé ! " );
 
             Transport.send(msg);

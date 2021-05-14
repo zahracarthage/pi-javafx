@@ -24,9 +24,13 @@ import java.awt.SystemTray;
 import java.awt.image.BufferedImage;
 import java.io.ByteArrayOutputStream;
 import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
+import java.io.InputStream;
 import java.io.OutputStream;
+import java.net.MalformedURLException;
 import java.net.URL;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
@@ -512,40 +516,51 @@ public class GestiondesrepasController implements Initializable {
     
     
     @FXML
-    private void uploadimg(ActionEvent event) {
-         FileChooser f = new FileChooser();
-        String img;
-
-        f.getExtensionFilters().add(new FileChooser.ExtensionFilter("image", "*.png"));
-        File fc = f.showOpenDialog(null);
+    private void uploadimg(ActionEvent event) throws FileNotFoundException, MalformedURLException, IOException {
+        {
+            
+         FileChooser fc = new FileChooser();
+        //fc.getExtensionFilters().add(new FileChooser.ExtensionFilter("Images", listFichier));
+        File f = fc.showOpenDialog(null);
         if (f != null) {
-            //System.out.println(fc.getName());
-            img = fc.getAbsoluteFile().toURI().toString();
-            Image i = new Image(img);
-            imagefield.setImage(i);
-            imagecomp = fc.toString();
-            System.out.println(imagecomp);
-            int index = imagecomp.lastIndexOf('\\');
-            if (index > 0) {
-                filename = imagecomp.substring(index + 1);
+
+            //Commentaire.setText("Image selectionnée" + f.getAbsolutePath());
+            InputStream is = null;
+            OutputStream os = null;
+            try {
+                is = new FileInputStream(new File(f.getAbsolutePath()));
+//             
+                os = new FileOutputStream(new File("D:\\kiftrip-website\\public\\uploads\\" + f.getName()));
+                byte[] buffer = new byte[1024];
+                int length;
+                while ((length = is.read(buffer)) > 0) {
+                    os.write(buffer, 0, length);
+                }
+                System.out.println("Malek");
+
+            } finally {
+                is.close();
+                os.close();
+
             }
-             String pathimage;
 
-        //    source = new File(pathimage);
-             // dest = new File(System.getProperty("user.dir") + "\\src\\com\\esprit\\img\\" + filename);
-            repas.filename =  filename;
-            //se.sendphp(fc.getAbsolutePath());
+            File file = new File("D:\\kiftrip-website\\public\\uploads\\" + f.getName());
+//            System.out.println(file.toURI().toString());
+            imagefield.setImage(new Image(file.toURI().toString()));
+            imagecomp = f.getName();
+            System.out.println(imagecomp);
+            imagepath.setText(imagecomp);
+        } else if (f == null) {
+            //Commentaire.setText("Erreur chargement de l'image");
+            System.out.println("Erreur !");
         }
-        imagefield.setFitHeight(215);
-        imagefield.setFitWidth(265);
-        //..\img\google.png
-
-        //C:\Users\splin\Documents\NetBeansProjects\FanArt\\com\esprit\img
-        repas.pathfile = "D:\\kiftrip-website\\public\\uploads";
+        
+          
+    }
     }
 
     @FXML
-    private void modifierrepas(ActionEvent event) throws SQLException {
+     private void modifierrepas(ActionEvent event) throws SQLException {
          
         repas r = affichagerepas.getSelectionModel().getSelectedItem();
         
