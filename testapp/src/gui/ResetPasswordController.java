@@ -106,7 +106,6 @@ public class ResetPasswordController implements Initializable {
         Userconnected.setUsername("");
         Userconnected.setEmail("");
         Userconnected.setPassword("");
-        Userconnected.setRole("");
         Userconnected.setImage("");
         FXMLLoader LOADER = new FXMLLoader(getClass().getResource("LoginUser.fxml"));
         try {
@@ -157,14 +156,12 @@ public class ResetPasswordController implements Initializable {
     
     @FXML
     private void BackToPage(ActionEvent event) throws IOException, Exception {
-       if(Userconnected.getRole().equals("Admin"))
-        {
      
-                FXMLLoader LOADER = new FXMLLoader(getClass().getResource("AdminInterfacea.fxml"));
+                FXMLLoader LOADER = new FXMLLoader(getClass().getResource("MenuBack.fxml"));
                 try {
                     Parent root = LOADER.load();
                     Scene sc = new Scene(root);
-                      AdminInterfaceaController cntr = LOADER.getController();
+                      MenuBackController cntr = LOADER.getController();
                     Stage window =(Stage)((Node) event.getSource()).getScene().getWindow() ;
               
                     window.setScene(sc);
@@ -173,24 +170,7 @@ public class ResetPasswordController implements Initializable {
                   
     }
             
-        }
-        if(Userconnected.getRole().equals("User"))
-        {
-     
-                FXMLLoader LOADER = new FXMLLoader(getClass().getResource("UserInterface.fxml"));
-                try {
-                    Parent root = LOADER.load();
-                    Scene sc = new Scene(root);
-                      UserInterfaceController cntr = LOADER.getController();
-                    Stage window =(Stage)((Node) event.getSource()).getScene().getWindow() ;
-              
-                    window.setScene(sc);
-                    window.show();
-                } catch (IOException ex) {
-                  
-    }
-            
-        }
+        
       
 
     

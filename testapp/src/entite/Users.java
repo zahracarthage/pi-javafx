@@ -14,31 +14,27 @@ public class Users {
     private String username;
     private String email;
     private String password;
-    private String role;
     private String image;
 
-    public Users(int id, String username, String email, String password, String role, String image) {
+    public Users(int id, String username, String email, String password, String image) {
         this.id = id;
         this.username = username;
         this.email = email;
         this.password = password;
-        this.role = role;
         this.image = image;
     }
 
-    public Users(String username, String email, String password, String role, String image) {
+    public Users(String username, String email, String password, String image) {
         this.username = username;
         this.email = email;
         this.password = password;
-        this.role = role;
         this.image = image;
     }
-     public Users(int id, String username, String email, String role) {
+     public Users(int id, String username, String email) {
         this.id = id;
         this.username = username;
         this.email = email;
         
-        this.role = role;
         
     }
 
@@ -61,9 +57,7 @@ public class Users {
         return password;
     }
 
-    public String getRole() {
-        return role;
-    }
+    
 
     public String getImage() {
         return image;
@@ -85,9 +79,7 @@ public class Users {
         this.password = password;
     }
 
-    public void setRole(String role) {
-        this.role = role;
-    }
+   
 
     public void setImage(String image) {
         this.image = image;
@@ -95,7 +87,7 @@ public class Users {
 
     @Override
     public String toString() {
-        return "Users{" + "id=" + id + ", username=" + username + ", email=" + email + ", password=" + password + ", role=" + role + ", image=" + image + '}';
+        return "Users{" + "id=" + id + ", username=" + username + ", email=" + email + ", password=" + password + ", image=" + image + '}';
     }
 
     

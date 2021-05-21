@@ -5,7 +5,6 @@
  */
 package gui;
 
-import controller.FrontrepasController;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -53,18 +52,6 @@ public class UserInterfaceController implements Initializable {
 
     @FXML
     private void GoToHome(ActionEvent event) {
-         FXMLLoader LOADER = new FXMLLoader(getClass().getResource("/views/frontrepas.fxml"));
-                try {
-                    Parent root = LOADER.load();
-                    Scene sc = new Scene(root);
-                     FrontrepasController cntr = LOADER.getController();
-                    Stage window =(Stage)((Node) event.getSource()).getScene().getWindow() ;
-              
-                    window.setScene(sc);
-                    window.show();
-                } catch (IOException ex) {
-                  
-    }
     }
     
 }

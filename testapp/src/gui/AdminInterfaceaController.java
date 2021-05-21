@@ -108,8 +108,7 @@ public class AdminInterfaceaController implements Initializable {
                 UserList.add(new Users(
                         resultSet.getInt("id"),
                         resultSet.getString("username"),
-                        resultSet.getString("email"),
-                        resultSet.getString("role")));
+                        resultSet.getString("email")));
                 UsersView.setItems(UserList);
 
             }

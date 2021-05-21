@@ -5,12 +5,9 @@
  */
 package gui;
 
-import controller.AjouterActiviteController;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -38,17 +35,23 @@ public class MenuBackController implements Initializable {
     @FXML
     private Button btn_activite;
     @FXML
+    private Button btn_user;
+    @FXML
     private Button btn_user1;
     @FXML
-    private Button btn_resrepas;
+    private Button btn_user11;
     @FXML
-    private Button btn_rec;
+    private Button btn_user111;
     @FXML
-    private Button btn_resact;
+    private Button btn_user1111;
     @FXML
-    private Button btn_resmais;
+    private Button btn_user1112;
     @FXML
-    private Button btn_resevent;
+    private Button btn_user1113;
+    @FXML
+    private Button btn_user11131;
+    @FXML
+    private Button btn_user11132;
 
     /**
      * Initializes the controller class.
@@ -72,35 +75,10 @@ public class MenuBackController implements Initializable {
 
     @FXML
     private void repas(ActionEvent event) {
-         try {
-           Parent exercices_parent = FXMLLoader.load(getClass().getResource("/views/gestiondesrepas.fxml"));
-           Scene ex_section_scene = new Scene(exercices_parent);
-           Stage second_stage =(Stage) ((Node) event.getSource()).getScene().getWindow();
-           
-           second_stage.setScene(ex_section_scene);
-           second_stage.show();
-                   
-                   
-                   } catch (IOException ex) {
-            Logger.getLogger(AjouterActiviteController.class.getName()).log(Level.SEVERE, null, ex);
-        }
-         
     }
 
     @FXML
     private void activite(ActionEvent event) {
-         try {
-           Parent exercices_parent = FXMLLoader.load(getClass().getResource("/gui/AddActivite.fxml"));
-           Scene ex_section_scene = new Scene(exercices_parent);
-           Stage second_stage =(Stage) ((Node) event.getSource()).getScene().getWindow();
-           
-           second_stage.setScene(ex_section_scene);
-           second_stage.show();
-                   
-                   
-                   } catch (IOException ex) {
-            Logger.getLogger(AjouterActiviteController.class.getName()).log(Level.SEVERE, null, ex);
-        }
     }
 
     @FXML
@@ -118,62 +96,6 @@ public class MenuBackController implements Initializable {
         } catch (IOException ex) {
 
         }
-    }
-
-    @FXML
-    private void resrepas(ActionEvent event) {
-         try {
-           Parent exercices_parent = FXMLLoader.load(getClass().getResource("/views/gestionresrepas.fxml"));
-           Scene ex_section_scene = new Scene(exercices_parent);
-           Stage second_stage =(Stage) ((Node) event.getSource()).getScene().getWindow();
-           
-           second_stage.setScene(ex_section_scene);
-           second_stage.show();
-                   
-                   
-                   } catch (IOException ex) {
-            Logger.getLogger(AjouterActiviteController.class.getName()).log(Level.SEVERE, null, ex);
-        }
-    }
-
-    @FXML
-    private void reclamation(ActionEvent event) {
-         try {
-           Parent exercices_parent = FXMLLoader.load(getClass().getResource("/views/gestionreclamation.fxml"));
-           Scene ex_section_scene = new Scene(exercices_parent);
-           Stage second_stage =(Stage) ((Node) event.getSource()).getScene().getWindow();
-           
-           second_stage.setScene(ex_section_scene);
-           second_stage.show();
-                   
-                   
-                   } catch (IOException ex) {
-            Logger.getLogger(AjouterActiviteController.class.getName()).log(Level.SEVERE, null, ex);
-        }
-    }
-
-    @FXML
-    private void resact(ActionEvent event) {
-         try {
-           Parent exercices_parent = FXMLLoader.load(getClass().getResource("/gui/Reservation.fxml"));
-           Scene ex_section_scene = new Scene(exercices_parent);
-           Stage second_stage =(Stage) ((Node) event.getSource()).getScene().getWindow();
-           
-           second_stage.setScene(ex_section_scene);
-           second_stage.show();
-                   
-                   
-                   } catch (IOException ex) {
-            Logger.getLogger(AjouterActiviteController.class.getName()).log(Level.SEVERE, null, ex);
-        }
-    }
-
-    @FXML
-    private void resmais(ActionEvent event) {
-    }
-
-    @FXML
-    private void resevent(ActionEvent event) {
     }
     
 }

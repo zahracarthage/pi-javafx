@@ -275,6 +275,7 @@ public class GestiondesrepasController implements Initializable {
 		// 4. Bind the SortedList comparator to the TableView comparator.
 		// 	  Otherwise, sorting the TableView would have no effect.
 		sortedData.comparatorProperty().bind(affichagerepas.comparatorProperty());
+                
 		
 		// 5. Add sorted (and filtered) data to the table.
 		affichagerepas.setItems(sortedData);

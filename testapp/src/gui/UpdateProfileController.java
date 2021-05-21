@@ -139,7 +139,6 @@ public class UpdateProfileController implements Initializable {
         Userconnected.setUsername("");
         Userconnected.setEmail("");
         Userconnected.setPassword("");
-        Userconnected.setRole("");
         Userconnected.setImage("");
         FXMLLoader LOADER = new FXMLLoader(getClass().getResource("LoginUser.fxml"));
         try {
@@ -158,7 +157,7 @@ public class UpdateProfileController implements Initializable {
     @FXML
    public void Modifier(ActionEvent event) throws IOException, Exception {
 
-        Users u = new Users(Userconnected.getId(), UsernameField.getText(), EmailField.getText(), Userconnected.getPassword(), "User", ImageName.getText());
+        Users u = new Users(Userconnected.getId(), UsernameField.getText(), EmailField.getText(), Userconnected.getPassword(), ImageName.getText());
         if (su.update(u, Userconnected.getId())) {
             Alert alert = new Alert(Alert.AlertType.CONFIRMATION, "Mr/Mme"+ UsernameField.getText()+ " "+ " Vos donnés personelles sont modifiés !", ButtonType.CLOSE);
             alert.show();
@@ -210,31 +209,13 @@ public class UpdateProfileController implements Initializable {
 
     @FXML
     private void BackToInterface(ActionEvent event) throws IOException, Exception {
-       if(Userconnected.getRole().equals("Admin"))
-        {
-     
-                FXMLLoader LOADER = new FXMLLoader(getClass().getResource("AdminBack.fxml"));
+       
+  
+                FXMLLoader LOADER = new FXMLLoader(getClass().getResource("MenuBack.fxml"));
                 try {
                     Parent root = LOADER.load();
                     Scene sc = new Scene(root);
-                      AdminBackController cntr = LOADER.getController();
-                    Stage window =(Stage)((Node) event.getSource()).getScene().getWindow() ;
-              
-                    window.setScene(sc);
-                    window.show();
-                } catch (IOException ex) {
-                  
-    }
-            
-        }
-        if(Userconnected.getRole().equals("User"))
-        {
-     
-                FXMLLoader LOADER = new FXMLLoader(getClass().getResource("UserInterface.fxml"));
-                try {
-                    Parent root = LOADER.load();
-                    Scene sc = new Scene(root);
-                      UserInterfaceController cntr = LOADER.getController();
+                      MenuBackController cntr = LOADER.getController();
                     Stage window =(Stage)((Node) event.getSource()).getScene().getWindow() ;
               
                     window.setScene(sc);
@@ -250,4 +231,4 @@ public class UpdateProfileController implements Initializable {
     }
 
     
-}
+

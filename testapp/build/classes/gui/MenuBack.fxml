@@ -18,8 +18,8 @@
       <Button fx:id="btn_event" layoutY="124.0" mnemonicParsing="false" onAction="#event" prefHeight="39.0" prefWidth="229.0" style="-fx-background-color: ffd137;" text="Gestion des commandes" />
       <Button fx:id="btn_maison" layoutX="1.0" layoutY="166.0" mnemonicParsing="false" onAction="#maison" prefHeight="39.0" prefWidth="229.0" style="-fx-background-color: ffd137;" text="Gestion Maison D'Hote" />
       <Button fx:id="btn_repas" layoutX="1.0" layoutY="208.0" mnemonicParsing="false" onAction="#repas" prefHeight="39.0" prefWidth="229.0" style="-fx-background-color: ffd137;" text="Gestion Repas" />
-      <Button fx:id="btn_resrepas" layoutY="250.0" mnemonicParsing="false" onAction="#resrepas" prefHeight="39.0" prefWidth="229.0" style="-fx-background-color: ffd137;" text="Gestion reservation repas" />
-      <Button fx:id="btn_rec" layoutX="1.0" layoutY="292.0" mnemonicParsing="false" onAction="#reclamation" prefHeight="39.0" prefWidth="229.0" style="-fx-background-color: ffd137;" text="Gestion des reclamations" />
+      <Button fx:id="btn_activite" layoutY="250.0" mnemonicParsing="false" onAction="#activite" prefHeight="39.0" prefWidth="229.0" style="-fx-background-color: ffd137;" text="Gestion reservation repas" />
+      <Button fx:id="btn_user" layoutX="1.0" layoutY="292.0" mnemonicParsing="false" onAction="#user" prefHeight="39.0" prefWidth="229.0" style="-fx-background-color: ffd137;" text="Gestion des reclamations" />
       <Label layoutX="81.0" layoutY="22.0" text="KIFTRIP">
          <font>
             <Font name="System Bold" size="27.0" />
@@ -35,16 +35,19 @@
          </font>
       </Label>
       <ImageView fitHeight="53.0" fitWidth="55.0" layoutX="1067.0" layoutY="15.0" pickOnBounds="true" preserveRatio="true" />
-      <Label layoutX="519.0" layoutY="12.0" prefHeight="21.0" prefWidth="174.0" text="Menu" textFill="#a8842a">
+      <Button layoutX="22.0" layoutY="677.0" mnemonicParsing="false" prefHeight="65.0" prefWidth="188.0" style="-fx-background-color: #ffb638;" text="Button" />
+      <Label layoutX="467.0" layoutY="12.0" prefHeight="21.0" prefWidth="174.0" text="TITLE" textFill="#a8842a">
          <font>
             <Font name="System Bold" size="41.0" />
          </font>
       </Label>
       <Button fx:id="btn_user1" layoutY="334.0" mnemonicParsing="false" onAction="#user" prefHeight="39.0" prefWidth="229.0" style="-fx-background-color: ffd137;" text="Gestion Utilisateur" />
-      <Button fx:id="btn_activite" layoutX="1.0" layoutY="376.0" mnemonicParsing="false" onAction="#activite" prefHeight="39.0" prefWidth="229.0" style="-fx-background-color: ffd137;" text="Gestion des activités" />
-      <Button fx:id="btn_resact" layoutX="1.0" layoutY="418.0" mnemonicParsing="false" onAction="#resact" prefHeight="39.0" prefWidth="229.0" style="-fx-background-color: ffd137;" text="Gestion reservation activités" />
-      <Button fx:id="btn_resmais" layoutY="459.0" mnemonicParsing="false" onAction="#resmais" prefHeight="39.0" prefWidth="229.0" style="-fx-background-color: ffd137;" text="Gestion reservation maison dhotes" />
-      <Button fx:id="btn_resevent" layoutY="545.0" mnemonicParsing="false" onAction="#resevent" prefHeight="39.0" prefWidth="229.0" style="-fx-background-color: ffd137;" text="Gestion reservation evenements" />
-      <Button fx:id="btn_event" layoutY="502.0" mnemonicParsing="false" onAction="#event" prefHeight="39.0" prefWidth="229.0" style="-fx-background-color: ffd137;" text="Gestion des evenements" />
+      <Button fx:id="btn_user11" layoutX="1.0" layoutY="376.0" mnemonicParsing="false" onAction="#user" prefHeight="39.0" prefWidth="229.0" style="-fx-background-color: ffd137;" text="Gestion des activités" />
+      <Button fx:id="btn_user111" layoutX="1.0" layoutY="418.0" mnemonicParsing="false" onAction="#user" prefHeight="39.0" prefWidth="229.0" style="-fx-background-color: ffd137;" text="Gestion reservation activités" />
+      <Button fx:id="btn_user1111" layoutY="460.0" mnemonicParsing="false" onAction="#user" prefHeight="39.0" prefWidth="229.0" style="-fx-background-color: ffd137;" text="Gestion des maison d'hotes" />
+      <Button fx:id="btn_user1112" layoutY="502.0" mnemonicParsing="false" onAction="#user" prefHeight="39.0" prefWidth="229.0" style="-fx-background-color: ffd137;" text="Gestion reservation maison dhotes" />
+      <Button fx:id="btn_user1113" layoutX="1.0" layoutY="544.0" mnemonicParsing="false" onAction="#user" prefHeight="39.0" prefWidth="229.0" style="-fx-background-color: ffd137;" text="Gestion reservation activités" />
+      <Button fx:id="btn_user11131" layoutY="629.0" mnemonicParsing="false" onAction="#user" prefHeight="39.0" prefWidth="229.0" style="-fx-background-color: ffd137;" text="Gestion reservation evenements" />
+      <Button fx:id="btn_user11132" layoutY="586.0" mnemonicParsing="false" onAction="#user" prefHeight="39.0" prefWidth="229.0" style="-fx-background-color: ffd137;" text="Gestion des evenements" />
    </children>
 </AnchorPane>

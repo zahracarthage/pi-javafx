@@ -55,7 +55,23 @@ public class AdminBackController implements Initializable {
     @FXML
     private Button btn_activite;
     @FXML
+    private Button btn_user;
+    @FXML
     private Button btn_user1;
+    @FXML
+    private Button btn_user11;
+    @FXML
+    private Button btn_user111;
+    @FXML
+    private Button btn_user1111;
+    @FXML
+    private Button btn_user1112;
+    @FXML
+    private Button btn_user1113;
+    @FXML
+    private Button btn_user11131;
+    @FXML
+    private Button btn_user11132;
      @FXML
     private TableView<Users> UsersViewss;
     @FXML
@@ -78,19 +94,7 @@ public class AdminBackController implements Initializable {
 
     UserService su = new UserService();
     @FXML
-    private Button btn_commande;
-    @FXML
-    private Button btn_resrep;
-    @FXML
-    private Button btn_reclamation;
-    
-        
-    @FXML
-    private Button btn_resact;
-    @FXML
-    private Button btn_resmaison;
-    @FXML
-    private Button btn_resevent;
+    private Button gofront;
 
     /**
      * Initializes the controller class.
@@ -103,7 +107,6 @@ public class AdminBackController implements Initializable {
 
     @FXML
     private void boutique(ActionEvent event) {
-        
           try {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/views/commande.fxml"));
             Parent root =loader.load();
@@ -121,7 +124,7 @@ public class AdminBackController implements Initializable {
 
     @FXML
     private void event(ActionEvent event) {
-        try {
+         try {
            Parent exercices_parent = FXMLLoader.load(getClass().getResource("/gui/EventBack.fxml"));
            Scene ex_section_scene = new Scene(exercices_parent);
            Stage second_stage =(Stage) ((Node) event.getSource()).getScene().getWindow();
@@ -137,7 +140,6 @@ public class AdminBackController implements Initializable {
 
     @FXML
     private void maison(ActionEvent event) {
-         
           try {
            Parent exercices_parent = FXMLLoader.load(getClass().getResource("/gui/MaisonView.fxml"));
            Scene ex_section_scene = new Scene(exercices_parent);
@@ -154,53 +156,15 @@ public class AdminBackController implements Initializable {
 
     @FXML
     private void repas(ActionEvent event) {
-         try {
-           Parent exercices_parent = FXMLLoader.load(getClass().getResource("/views/gestiondesrepas.fxml"));
-           Scene ex_section_scene = new Scene(exercices_parent);
-           Stage second_stage =(Stage) ((Node) event.getSource()).getScene().getWindow();
-           
-           second_stage.setScene(ex_section_scene);
-           second_stage.show();
-                   
-                   
-                   } catch (IOException ex) {
-            Logger.getLogger(AjouterActiviteController.class.getName()).log(Level.SEVERE, null, ex);
-        }
-        
+          
     }
 
     @FXML
     private void activite(ActionEvent event) {
-        
-       try {
-           Parent exercices_parent = FXMLLoader.load(getClass().getResource("/gui/AddActivite.fxml"));
-           Scene ex_section_scene = new Scene(exercices_parent);
-           Stage second_stage =(Stage) ((Node) event.getSource()).getScene().getWindow();
-           
-           second_stage.setScene(ex_section_scene);
-           second_stage.show();
-                   
-                   
-                   } catch (IOException ex) {
-            Logger.getLogger(AjouterActiviteController.class.getName()).log(Level.SEVERE, null, ex);
-        }
     }
 
     @FXML
     private void user(ActionEvent event) {
-        
-         FXMLLoader LOADER = new FXMLLoader(getClass().getResource("AdminBack.fxml"));
-        try {
-            Parent root = LOADER.load();
-            Scene sc = new Scene(root);
-            AdminBackController cntr = LOADER.getController();
-            Stage window = (Stage) ((Node) event.getSource()).getScene().getWindow();
-
-            window.setScene(sc);
-            window.show();
-        } catch (IOException ex) {
-
-        }
     }
 
     @FXML
@@ -220,7 +184,6 @@ public class AdminBackController implements Initializable {
         }
 }
     
-    
     public void refresh() {
 
         try {
@@ -234,8 +197,7 @@ public class AdminBackController implements Initializable {
                 UserList.add(new Users(
                         resultSet.getInt("id"),
                         resultSet.getString("username"),
-                        resultSet.getString("email"),
-                        resultSet.getString("role")));
+                        resultSet.getString("email")));
                 UsersViewss.setItems(UserList);
 
             }
@@ -300,10 +262,9 @@ public class AdminBackController implements Initializable {
     }
 
     @FXML
-    private void commande(ActionEvent event) {
-        
+    private void gofront(ActionEvent event) {
           try {
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("/views/commande.fxml"));
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("Front.fxml"));
             Parent root =loader.load();
              
             Stage stage = new Stage();
@@ -315,74 +276,6 @@ public class AdminBackController implements Initializable {
         } catch (IOException ex) {
             System.out.println(ex.getMessage());
         }
-    }
-
-    @FXML
-    private void resrepas(ActionEvent event) {
-         try {
-           Parent exercices_parent = FXMLLoader.load(getClass().getResource("/views/gestionresrepas.fxml"));
-           Scene ex_section_scene = new Scene(exercices_parent);
-           Stage second_stage =(Stage) ((Node) event.getSource()).getScene().getWindow();
-           
-           second_stage.setScene(ex_section_scene);
-           second_stage.show();
-                   
-                   
-                   } catch (IOException ex) {
-            Logger.getLogger(AjouterActiviteController.class.getName()).log(Level.SEVERE, null, ex);
-        }
-    }
-
-    @FXML
-    private void reclamation(ActionEvent event) {
-         try {
-           Parent exercices_parent = FXMLLoader.load(getClass().getResource("/views/gestionreclamation.fxml"));
-           Scene ex_section_scene = new Scene(exercices_parent);
-           Stage second_stage =(Stage) ((Node) event.getSource()).getScene().getWindow();
-           
-           second_stage.setScene(ex_section_scene);
-           second_stage.show();
-                   
-                   
-                   } catch (IOException ex) {
-            Logger.getLogger(AjouterActiviteController.class.getName()).log(Level.SEVERE, null, ex);
-        }
-    }
-
-    @FXML
-    private void resactivite(ActionEvent event) {
-        try {
-           Parent exercices_parent = FXMLLoader.load(getClass().getResource("/gui/Reservation.fxml"));
-           Scene ex_section_scene = new Scene(exercices_parent);
-           Stage second_stage =(Stage) ((Node) event.getSource()).getScene().getWindow();
-           
-           second_stage.setScene(ex_section_scene);
-           second_stage.show();
-                   
-                   
-                   } catch (IOException ex) {
-            Logger.getLogger(AjouterActiviteController.class.getName()).log(Level.SEVERE, null, ex);
-        }
-    }
-
-    @FXML
-    private void resmaison(ActionEvent event) {
-          try{
-           Parent exercices_parent = FXMLLoader.load(getClass().getResource("/gui/ReservationView.fxml"));
-           Scene ex_section_scene = new Scene(exercices_parent);
-           Stage second_stage =(Stage) ((Node) event.getSource()).getScene().getWindow();
-           
-           second_stage.setScene(ex_section_scene);
-           second_stage.show();
-                   
-                   
-                   } catch (IOException ex) {
-            Logger.getLogger(AjouterActiviteController.class.getName()).log(Level.SEVERE, null, ex);
-        }
-    }
-
-    @FXML
-    private void resevent(ActionEvent event) {
     }
     
     

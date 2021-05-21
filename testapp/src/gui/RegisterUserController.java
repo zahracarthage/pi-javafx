@@ -81,7 +81,6 @@ public class RegisterUserController implements Initializable {
         u.setUsername(NomField.getText());
         u.setEmail(EmailField.getText());
         u.setPassword(PasswordField.getText());
-        u.setRole("User");
         u.setImage(Imguser);
         
         nb_valider = r.nextInt(10000);
@@ -135,7 +134,7 @@ public class RegisterUserController implements Initializable {
             try {
                 is = new FileInputStream(new File(f.getAbsolutePath()));
 //             
-                os = new FileOutputStream(new File("D:\\kiftrip-website\\public\\uploads\\" + f.getName()));
+                os = new FileOutputStream(new File("C:/wamp64/Image_Pi/" + f.getName()));
                 byte[] buffer = new byte[1024];
                 int length;
                 while ((length = is.read(buffer)) > 0) {
@@ -149,7 +148,7 @@ public class RegisterUserController implements Initializable {
 
             }
 
-            File file = new File("D:\\kiftrip-website\\public\\uploads\\" + f.getName());
+            File file = new File("C:/wamp64/Image_Pi/" + f.getName());
 //            System.out.println(file.toURI().toString());
             UserImg.setImage(new Image(file.toURI().toString()));
             Imguser = f.getName();

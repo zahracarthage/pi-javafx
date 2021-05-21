@@ -23,6 +23,7 @@ import javafx.scene.control.ButtonType;
 import javafx.scene.control.TextField;
 import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
+import org.springframework.security.crypto.bcrypt.BCrypt;
 
 /**
  * FXML Controller class
@@ -60,14 +61,13 @@ public class LoginUserController implements Initializable {
         Userconnected.setUsername(user1.getUsername());
         Userconnected.setEmail(user1.getEmail());
         Userconnected.setPassword(user1.getPassword());
-        Userconnected.setRole(user1.getRole());
         Userconnected.setImage(user1.getImage());
         
        Userconnected=user1;
         System.out.println("this is test");
         System.out.println(Userconnected);
         
-        if(u.getRole().equals("Admin"))
+   /*     if(u.getRole().equals("Admin"))
         {
             Alert alert = new Alert(Alert.AlertType.CONFIRMATION, "Je vous souhaite la bienvenue Mr/Mme"+ u.getUsername() +" "+ u.getEmail(), ButtonType.OK);
                 alert.show();
@@ -86,18 +86,18 @@ public class LoginUserController implements Initializable {
     }
             
         }
+      */  
         
-        
-        if(u.getRole().equals("User"))
-        {
-            Alert alert = new Alert(Alert.AlertType.CONFIRMATION, "Je vous souhaite la bienvenue Mr/Mme"+  u.getUsername() +" "+ u.getEmail(), ButtonType.OK);
-            alert.show();
+      /*  if(u.getRole().equals("User"))
+        {*/
+             Alert alert = new Alert(Alert.AlertType.CONFIRMATION, "Je vous souhaite la bienvenue Mr/Mme"+ u.getUsername() +" "+ u.getEmail(), ButtonType.OK);
+                alert.show();
      
-                FXMLLoader LOADER = new FXMLLoader(getClass().getResource("UserInterface.fxml"));
+                FXMLLoader LOADER = new FXMLLoader(getClass().getResource("MenuBack.fxml"));
                 try {
                     Parent root = LOADER.load();
                     Scene sc = new Scene(root);
-                      UserInterfaceController cntr = LOADER.getController();
+                      MenuBackController cntr = LOADER.getController();
                     Stage window =(Stage)((Node) event.getSource()).getScene().getWindow() ;
               
                     window.setScene(sc);
@@ -106,10 +106,10 @@ public class LoginUserController implements Initializable {
                   
     }
             
-        }
+        }/*
         
             
-        }
+        }*/
         
     }
 
