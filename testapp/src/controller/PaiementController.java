@@ -90,8 +90,8 @@ public class PaiementController implements Initializable {
 //        
 //        
 //        Customer a =Customer.retrieve("cus_JOBwZLoRc0VfHh");
-                 //Stripe.apiKey="sk_test_flb9vUYyiwC85Wx2ONpANeYf";
-        Stripe.apiKey="sk_test_51IlkHDJJ2kxqGeL0FBoA3u5SkjGexQC65W8IwLcv2cZqCJqMlvpMpZC9Q2h1knLWtpnseyTp7vzfkthbuJ9LFbQN00dGoiuzfS";
+                
+        Stripe.apiKey="Your stripe API KEY";
                 System.out.println("aaaaaaaa");
         Customer a =Customer.retrieve("cus_JOXPDBhV9NaLQW");
             //    System.out.println("aaaaaaaaa");
